@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { name: "Services", href: "#services" },
-  { name: "Selected Work", href: "#work" },
+  { name: "Atelier", href: "#intelligence-atelier" },
+  { name: "Disciplines", href: "#services" },
+  { name: "Systems", href: "#system" },
+  { name: "The Studio", href: "#intelligence-studio" },
   { name: "Process", href: "#process" },
-  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navigation() {
@@ -44,21 +46,30 @@ export default function Navigation() {
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-700 ease-in-out ${
           scrolled
             ? "bg-[#050505]/80 backdrop-blur-md border-b border-[#151515] py-4"
-            : "bg-transparent border-b border-transparent py-8"
+            : "bg-transparent border-b border-transparent py-6"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        <div className="w-full px-8 md:px-16 xl:px-24 flex items-center relative h-16">
+          {/* Logo - Positioned Absolute Left */}
           <div
-            className="cursor-pointer flex flex-col group"
+            className="cursor-pointer flex items-center gap-4 group absolute left-8 md:left-16 xl:left-24"
             onClick={() => scrollTo("#hero")}
           >
-            <span className="font-abeezee text-xl tracking-[0.2em] font-light text-[#F5F0E6] group-hover:text-[#9E8557] transition-colors duration-300">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 opacity-90 group-hover:opacity-100 transition-opacity">
+              <Image 
+                src="/fd-logo.png" 
+                alt="FD Logo" 
+                fill 
+                className="object-contain mix-blend-screen" 
+              />
+            </div>
+            <span className="font-abeezee text-[20px] md:text-2xl tracking-[0.25em] font-light text-[#9E8557] group-hover:text-[#F5F0E6] transition-colors duration-300">
               FATE&DESTINY
             </span>
           </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex gap-10 items-center">
+          {/* Desktop Nav - Centered */}
+          <div className="hidden md:flex gap-10 items-center justify-center w-full">
             {links.map((link) => (
               <button
                 key={link.name}
@@ -71,13 +82,28 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden text-[#F5F0E6] hover:text-[#9E8557] transition-colors"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu size={28} strokeWidth={1} />
-          </button>
+          {/* Right Section - Desktop Contact & Mobile Toggle */}
+          <div className="absolute right-8 md:right-16 xl:right-24 flex items-center gap-6">
+            {/* Desktop Contact Button */}
+            <a 
+              href="https://wa.me/919372132828"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center justify-center px-8 py-3.5 bg-[#9E8557] hover:bg-[#F5F0E6] text-[#050505] transition-colors duration-300 rounded-[2px]"
+            >
+              <span className="text-[11px] md:text-[12px] font-inter uppercase tracking-[0.2em] font-medium">
+                Contact
+              </span>
+            </a>
+
+            {/* Mobile Toggle */}
+            <button
+              className="md:hidden text-[#F5F0E6] hover:text-[#9E8557] transition-colors"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu size={28} strokeWidth={1} />
+            </button>
+          </div>
         </div>
       </nav>
 

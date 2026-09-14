@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
 export default function IntroLoader() {
@@ -14,7 +15,7 @@ export default function IntroLoader() {
     
     // Simulate loading progress
     const interval = setInterval(() => {
-      currentProgress += Math.floor(Math.random() * 8) + 1;
+      currentProgress += Math.floor(Math.random() * 15) + 5;
       if (currentProgress > 100) currentProgress = 100;
       setProgress(currentProgress);
 
@@ -27,22 +28,22 @@ export default function IntroLoader() {
         tl.to(textRef.current, {
           opacity: 0,
           y: -10,
-          duration: 0.6,
+          duration: 0.4,
           ease: "power2.inOut",
         })
         .to(progressLineRef.current, {
           scaleX: 0,
           transformOrigin: "right",
-          duration: 0.6,
+          duration: 0.4,
           ease: "expo.inOut",
-        }, "-=0.4")
+        }, "-=0.2")
         .to(loaderRef.current, {
           yPercent: -100,
-          duration: 1.2,
+          duration: 0.8,
           ease: "expo.inOut",
-        }, "-=0.2");
+        }, "-=0.1");
       }
-    }, 30);
+    }, 20);
 
     return () => clearInterval(interval);
   }, []);
@@ -54,7 +55,19 @@ export default function IntroLoader() {
     >
       <div className="w-full max-w-sm px-8 flex flex-col items-center">
         <div ref={textRef} className="flex flex-col items-center mb-12">
-          <span className="font-abeezee text-4xl tracking-[0.15em] font-light mb-4">F&D</span>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative w-16 h-16 md:w-20 md:h-20 opacity-100">
+              <Image 
+                src="/fd-logo.png" 
+                alt="FD Logo" 
+                fill 
+                className="object-contain mix-blend-screen" 
+              />
+            </div>
+            <span className="font-abeezee text-3xl md:text-4xl tracking-[0.25em] font-light text-[#9E8557]">
+              FATE&DESTINY
+            </span>
+          </div>
           <span className="text-[10px] font-inter tracking-[0.3em] text-[#9B9B9B] uppercase">Loading System</span>
         </div>
         

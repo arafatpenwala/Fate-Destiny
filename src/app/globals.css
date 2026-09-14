@@ -5,16 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #9E8557;
-  --color-primary-hover: #7F6A44;
-  --color-primary-dark: #5C4C31;
+  --color-primary: #C5A46D;
+  --color-primary-hover: #9F8252;
+  --color-primary-dark: #6D5432;
 
-  --color-secondary-purple: #291046;
-  --color-secondary-mid: #1d1141;
-  --color-secondary-teal: #084C42;
-
-  --color-neutral-beige: #F7F5EE;
-  --color-neutral-cream: #FDFCF8;
+  --color-neutral-obsidian: #050505;
+  --color-neutral-graphite: #111111;
+  --color-neutral-charcoal: #1A1A1A;
+  --color-neutral-ivory: #F4EFE5;
+  --color-neutral-muted: #858585;
   --color-neutral-dark: #0b0b0b;
 
   --font-abeezee: var(--font-abeezee), sans-serif;
