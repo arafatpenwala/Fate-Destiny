@@ -110,7 +110,7 @@ export default function GoldenPortalCTA() {
 
             {/* Luxury Interactive Button */}
             <a 
-              href="https://wa.me/1234567890?text=Hello!%20I%20would%20like%20to%20start%20a%20project."
+              href="https://wa.me/919372132828?text=Hello!%20I%20would%20like%20to%20start%20a%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center gap-4 px-8 py-4 bg-[#0A0A0A]/80 backdrop-blur-md border border-[#9E8557]/40 rounded-full overflow-hidden transition-all duration-700 hover:border-[#9E8557] hover:scale-105 hover:shadow-[0_0_40px_rgba(158,133,87,0.3)] shadow-2xl"
