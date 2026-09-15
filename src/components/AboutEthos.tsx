@@ -54,17 +54,17 @@ export default function AboutEthos() {
       {/* Dynamic Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(158,133,87,0.05)_0%,_transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24 items-center justify-center h-full">
+      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-24 items-center justify-center h-full py-12 md:py-0">
         
         {/* Left Side: Scrubbed Text Reveal */}
         <div className="w-full lg:w-3/5 flex flex-col relative justify-center h-auto lg:h-full">
-          <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-8 opacity-50">
+          <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-4 lg:mb-8 opacity-50">
             THE ATELIER
           </span>
           
           <div className="relative">
             {/* Outline Text (Always Visible) */}
-            <h2 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-transparent uppercase tracking-tighter" style={{ WebkitTextStroke: '1px rgba(245,240,230,0.1)' }}>
+            <h2 className="text-[2.75rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-transparent uppercase tracking-tighter" style={{ WebkitTextStroke: '1px rgba(245,240,230,0.1)' }}>
               WE ENGINEER<br />
               DIGITAL<br />
               DOMINANCE.
@@ -74,7 +74,7 @@ export default function AboutEthos() {
             <h2 
               ref={textFillRef}
               aria-hidden="true"
-              className="absolute top-0 left-0 w-full text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter pointer-events-none"
+              className="absolute top-0 left-0 w-full text-[2.75rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter pointer-events-none"
               style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
             >
               WE ENGINEER<br />
@@ -87,19 +87,17 @@ export default function AboutEthos() {
         {/* Right Side: Philosophy (Fades in on scrub) */}
         <div 
           ref={rightColumnRef}
-          className="w-full lg:w-2/5 flex flex-col justify-center h-auto lg:h-full gap-6 lg:gap-8"
+          className="w-full lg:w-2/5 flex flex-col justify-center h-auto lg:h-full gap-4 sm:gap-6 lg:gap-8"
         >
-          <div className="w-16 h-[1px] bg-[#9E8557]/50 mb-4" />
+          <div className="w-12 md:w-16 h-[1px] bg-[#9E8557]/50 mb-2 md:mb-4" />
           
-          <p className="text-[14px] md:text-[15px] lg:text-[13px] xl:text-[16px] font-inter text-[#F5F0E6] tracking-[0.1em] leading-[2.2] uppercase">
+          <p className="text-[13px] md:text-[15px] lg:text-[13px] xl:text-[16px] font-inter text-[#F5F0E6] tracking-[0.1em] leading-[2] md:leading-[2.2] uppercase">
             Fate & Destiny is not an agency. We are a private digital atelier operating at the bleeding edge of software engineering and artificial intelligence.
           </p>
           
-          <p className="text-[12px] md:text-[13px] lg:text-[11px] xl:text-[14px] font-inter text-[#858585] tracking-[0.1em] leading-[2] uppercase">
+          <p className="text-[11px] md:text-[13px] lg:text-[11px] xl:text-[14px] font-inter text-[#858585] tracking-[0.1em] leading-[1.8] md:leading-[2] uppercase">
             We partner exclusively with visionaries who refuse to settle for mediocrity. Our systems are bespoke, our code is ruthless, and our designs are engineered to obliterate the competition. 
           </p>
-
-
         </div>
 
       </div>
