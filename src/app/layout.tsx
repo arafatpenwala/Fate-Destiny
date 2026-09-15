@@ -16,19 +16,19 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://fatedestinyofficial.com/"),
   title: "FATE&DESTINY | Premium Websites, AI Automation & AI Agents",
-  description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development in Dubai and globally.",
+  description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
   keywords: [
-    "Full stack website development", 
-    "AI automation services", 
-    "AI agent development", 
-    "Custom website development", 
-    "Dubai AI automation services", 
-    "AI solutions for businesses", 
+    "Full Stack Web Development", 
+    "AI Automation Services", 
+    "AI Agent Development", 
+    "Custom AI Solutions", 
+    "AI-Powered Websites", 
+    "Business Automation", 
     "FATE&DESTINY"
   ],
   openGraph: {
     title: "FATE&DESTINY | Premium Websites, AI Automation & AI Agents",
-    description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development in Dubai and globally.",
+    description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
     url: "https://fatedestinyofficial.com/",
     siteName: "FATE&DESTINY",
     locale: "en_US",
@@ -75,17 +75,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "ProfessionalService",
+                  "@type": "Organization",
                   "name": "FATE&DESTINY",
                   "url": "https://fatedestinyofficial.com/",
                   "logo": "https://fatedestinyofficial.com/fd-logo-gold.png",
                   "image": "https://fatedestinyofficial.com/fd-logo-gold.png",
-                  "description": "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development in Dubai and globally.",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Dubai",
-                    "addressCountry": "AE"
-                  },
+                  "description": "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
                   "telephone": "+919372132828",
                   "priceRange": "$$$"
                 },
