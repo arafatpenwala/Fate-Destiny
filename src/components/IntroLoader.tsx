@@ -80,7 +80,7 @@ export default function IntroLoader() {
         </div>
         
         <div className="mt-6 text-[10px] font-inter tracking-[0.2em] text-[#9B9B9B]">
-          {progress.toString().padStart(3, '0')}%
+          {progress}%
         </div>
       </div>
     </div>

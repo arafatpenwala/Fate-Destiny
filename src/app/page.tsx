@@ -6,10 +6,11 @@ import AboutEthos from "@/components/AboutEthos";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import SystemDiagram from "@/components/SystemDiagram";
 import TechArchitecture from "@/components/TechArchitecture";
-import WhyFateDestiny from "@/components/WhyFateDestiny";
 import Methodology from "@/components/Methodology";
 import Footer from "@/components/Footer";
 import TheIntelligenceStudio from "@/components/TheIntelligenceStudio";
+import VisionaryMatrix from "@/components/VisionaryMatrix";
+import GoldenPortalCTA from "@/components/GoldenPortalCTA";
 
 export default function Home() {
   return (
@@ -22,10 +23,11 @@ export default function Home() {
         <IntelligenceAtelier />
         <ServicesShowcase />
         <SystemDiagram />
+        <VisionaryMatrix />
         <AboutEthos />
         <TheIntelligenceStudio />
-        <WhyFateDestiny />
         <Methodology />
+        <GoldenPortalCTA />
         <Footer />
       </div>
     </main>

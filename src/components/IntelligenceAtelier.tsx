@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float, Sphere, Cylinder, Torus } from "@react-three/drei";
 import * as THREE from "three";
@@ -53,7 +53,11 @@ function ProceduralRobot() {
     color: "#FFB067",
   });
 
-  const logoTexture = new THREE.TextureLoader().load("/fd-logo.png");
+  const [logoTexture, setLogoTexture] = useState<THREE.Texture | null>(null);
+
+  useEffect(() => {
+    setLogoTexture(new THREE.TextureLoader().load("/fd-logo.png"));
+  }, []);
 
   return (
     <group ref={groupRef} position={[0, -1, 0]}>
@@ -63,12 +67,14 @@ function ProceduralRobot() {
         {/* FD Logo */}
         <mesh position={[0, 0.5, 0.73]} rotation={[-0.1, 0, 0]}>
           <planeGeometry args={[0.5, 0.4]} />
-          <meshBasicMaterial 
-            map={logoTexture} 
-            transparent={true} 
-            blending={THREE.AdditiveBlending} 
-            depthWrite={false}
-          />
+          {logoTexture && (
+            <meshBasicMaterial 
+              map={logoTexture} 
+              transparent={true} 
+              blending={THREE.AdditiveBlending} 
+              depthWrite={false}
+            />
+          )}
         </mesh>
       </group>
       
@@ -126,27 +132,29 @@ function Halo() {
 
 export default function IntelligenceAtelier() {
   const containerRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  if (typeof window !== "undefined") {
+  useEffect(() => {
+    setMounted(true);
     gsap.registerPlugin(ScrollTrigger);
-  }
+  }, []);
 
   return (
     <section 
       id="intelligence-atelier"
       ref={containerRef}
-      className="relative w-full min-h-screen bg-[#050505] flex flex-col lg:flex-row items-center z-20 overflow-hidden border-t border-[#151515]"
+      className="relative w-full min-h-screen bg-[#050505] flex flex-col xl:flex-row items-center z-20 overflow-hidden border-t border-[#151515]"
     >
       {/* Background ambient gradient */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(158,133,87,0.05)_0%,_transparent_70%)] pointer-events-none" />
 
       {/* Left Side: Editorial Content */}
-      <div className="relative z-10 w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:pl-24 pt-32 lg:pt-0 h-full">
+      <div className="relative z-10 w-full xl:w-1/2 flex flex-col justify-center px-6 md:px-12 xl:pl-24 pt-32 xl:pt-0 h-auto xl:h-full pb-12 xl:pb-0">
         <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-8">
-          02 // THE INTELLIGENCE ATELIER
+          THE INTELLIGENCE ATELIER
         </span>
         
-        <h2 className="text-[3.5rem] md:text-[5rem] lg:text-[6rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter mb-10 max-w-2xl">
+        <h2 className="text-[3.5rem] md:text-[5rem] xl:text-[6rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter mb-10 max-w-2xl">
           BUILT WITH <br/>
           <span className="italic text-[#9E8557]">INTELLIGENCE.</span>
         </h2>
@@ -166,28 +174,30 @@ export default function IntelligenceAtelier() {
       </div>
 
       {/* Right Side: 3D Interactive Canvas */}
-      <div className="relative z-0 w-full lg:w-1/2 h-[60vh] lg:h-screen cursor-crosshair">
-        <Canvas camera={{ position: [0, 1, 6], fov: 45 }} dpr={[1, 2]}>
-          <color attach="background" args={['#050505']} />
-          
-          {/* Cinematic Lighting */}
-          <ambientLight intensity={0.2} />
-          <directionalLight position={[5, 5, 5]} intensity={1.5} color="#F5F0E6" />
-          <directionalLight position={[-5, 2, -5]} intensity={2} color="#9E8557" />
-          <spotLight position={[0, 10, 0]} intensity={1} angle={0.5} penumbra={1} color="#ffffff" />
-          
-          {/* Environment Reflections */}
-          <Environment preset="city" environmentIntensity={0.5} />
-          
-          <group position={[0, -0.5, 0]}>
-            <ProceduralRobot />
-            <Halo />
-          </group>
-        </Canvas>
+      <div className="relative z-0 w-full xl:w-1/2 h-[50vh] md:h-[60vh] xl:h-screen cursor-crosshair mt-8 xl:mt-0">
+        {mounted && (
+          <Canvas camera={{ position: [0, 1, 6], fov: 45 }} dpr={[1, 2]}>
+            <color attach="background" args={['#050505']} />
+            
+            {/* Cinematic Lighting */}
+            <ambientLight intensity={0.2} />
+            <directionalLight position={[5, 5, 5]} intensity={1.5} color="#F5F0E6" />
+            <directionalLight position={[-5, 2, -5]} intensity={2} color="#9E8557" />
+            <spotLight position={[0, 10, 0]} intensity={1} angle={0.5} penumbra={1} color="#ffffff" />
+            
+            {/* Environment Reflections */}
+            <Environment preset="city" environmentIntensity={0.5} />
+            
+            <group position={[0, -1, 0]}>
+              <ProceduralRobot />
+              <Halo />
+            </group>
+          </Canvas>
+        )}
 
         {/* Decorative corner brackets for the canvas */}
-        <div className="absolute top-12 right-12 w-8 h-8 border-t border-r border-[#9E8557]/30 pointer-events-none hidden lg:block" />
-        <div className="absolute bottom-12 right-12 w-8 h-8 border-b border-r border-[#9E8557]/30 pointer-events-none hidden lg:block" />
+        <div className="absolute top-12 right-12 w-8 h-8 border-t border-r border-[#9E8557]/30 pointer-events-none hidden xl:block" />
+        <div className="absolute bottom-12 right-12 w-8 h-8 border-b border-r border-[#9E8557]/30 pointer-events-none hidden xl:block" />
       </div>
     </section>
   );

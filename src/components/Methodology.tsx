@@ -41,12 +41,12 @@ export default function Methodology() {
         {/* Left Side: Editorial Intro */}
         <div className="w-full lg:w-1/3 flex flex-col pt-12">
           <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-6">
-            05 // THE PROCESS
+            THE PROCESS
           </span>
           <h2 className="text-[3rem] md:text-[4rem] font-abeezee font-light leading-[1.1] text-[#F5F0E6] uppercase tracking-tighter mb-8">
             PRECISION <br />
-            <span className="text-[#555]">IN EVERY</span> <br />
-            STEP.
+            <span className="text-[#555]">IN EVERY</span> <br className="hidden md:block" />
+            <span className="md:hidden"> </span>STEP.
           </h2>
           <p className="text-[11px] md:text-[12px] font-inter text-[#858585] tracking-[0.1em] leading-loose uppercase">
             A rigorous, uncompromising methodology designed to transform raw ambition into flawless digital reality.

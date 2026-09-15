@@ -97,16 +97,16 @@ export default function Hero() {
         </div>
 
         {/* Editorial Typography */}
-        <div ref={textScrollRef} className="w-full px-6 md:px-12 flex flex-col z-20 h-full justify-center lg:justify-end pb-24 lg:pb-32 pointer-events-none mix-blend-difference">
+        <div ref={textScrollRef} className="w-full px-6 md:px-12 flex flex-col z-20 h-full justify-center lg:justify-end pb-16 lg:pb-32 pointer-events-none mix-blend-difference">
           <div ref={textRef}>
-            <h1 className="text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.95] mb-12 text-[#F4EFE5] uppercase tracking-tighter">
+            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[1.1] md:leading-[0.95] mb-8 lg:mb-12 text-[#F4EFE5] uppercase tracking-tighter">
               We Build <br />
-              <span className="italic text-[#C5A46D] pr-4">What The Future</span> <br />
+              <span className="italic text-[#C5A46D] pr-4">What The Future</span> <br className="hidden md:block" />
               Has Not Imagined.
             </h1>
 
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full lg:w-4/5 gap-10">
-              <p className="text-[#858585] font-inter font-light text-[11px] md:text-xs max-w-sm leading-loose tracking-wide uppercase">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full lg:w-4/5 gap-6 lg:gap-10">
+              <p className="text-[#858585] font-inter font-light text-[10px] sm:text-[11px] md:text-xs max-w-xs md:max-w-sm leading-loose tracking-wide uppercase">
                 Full-stack digital experiences, intelligent automations, and AI agents engineered for ambitious businesses.
               </p>
             </div>

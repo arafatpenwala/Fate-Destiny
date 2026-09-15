@@ -79,14 +79,14 @@ export default function BrandIntro() {
       {/* Vertical Label */}
       <div className="absolute top-1/4 left-6 md:left-12 -rotate-90 origin-left hidden lg:block opacity-50 z-10">
         <span className="text-[8px] font-inter tracking-[0.4em] text-[#9E8557] uppercase">
-          01 // THE VISION
+          THE VISION
         </span>
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
         
         {/* Scattered Typography Lockup */}
-        <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[8rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter text-center flex flex-wrap justify-center gap-x-4 md:gap-x-8 max-w-5xl">
+        <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[6.5rem] xl:text-[8rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter text-center flex flex-wrap justify-center gap-x-4 md:gap-x-8 max-w-5xl">
           <span ref={el => { wordsRef.current[0] = el; }} className="inline-block">WE</span>
           <span ref={el => { wordsRef.current[1] = el; }} className="inline-block text-[#9E8557]">BUILD</span>
           <span ref={el => { wordsRef.current[2] = el; }} className="inline-block">WHAT</span>

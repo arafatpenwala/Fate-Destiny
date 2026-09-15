@@ -37,11 +37,11 @@ const services = [
 // The premium 3D kinetic sculpture
 function FateOrbit({ activeIndex }: { activeIndex: number }) {
   const groupRef = useRef<THREE.Group>(null);
-  
+
   const arc1Ref = useRef<THREE.Group>(null);
   const arc2Ref = useRef<THREE.Group>(null);
   const arc3Ref = useRef<THREE.Group>(null);
-  
+
   const nodesRef = useRef<THREE.Group>(null);
   const coreRef = useRef<THREE.Group>(null);
 
@@ -85,7 +85,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
     let targetScale = 1;
     let targetNodesOpacity = 0;
 
-    if (activeIndex === 0) { 
+    if (activeIndex === 0) {
       // State 1: Digital Architecture (Structured, open)
       targetArc1RotX = Math.PI / 6;
       targetArc1RotY = 0;
@@ -95,7 +95,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       targetArc3RotX = Math.PI / 12;
       targetScale = 0.9;
       targetNodesOpacity = 0.2; // slight nodes
-    } else if (activeIndex === 1) { 
+    } else if (activeIndex === 1) {
       // State 2: Automation Flow (Angular, flowing network)
       targetArc1RotX = Math.PI / 4;
       targetArc1RotY = 0;
@@ -105,11 +105,11 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       targetArc3RotX = Math.PI / 10;
       targetScale = 1.0;
       targetNodesOpacity = 1;
-      
+
       // Dynamic flowing motion for nodes
-      nodesRef.current.rotation.z -= delta * 1.2; 
+      nodesRef.current.rotation.z -= delta * 1.2;
       nodesRef.current.rotation.y += delta * 0.8;
-    } else if (activeIndex === 2) { 
+    } else if (activeIndex === 2) {
       // State 3: AI Agents (Complex intelligence structure)
       targetArc1RotX = Math.PI / 4;
       targetArc1RotY = Math.PI / 6;
@@ -119,7 +119,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       targetArc3RotX = Math.PI / 8;
       targetScale = 1.1;
       targetNodesOpacity = 1;
-      
+
       // erratic advanced logic motion
       nodesRef.current.rotation.x += delta * 1;
       nodesRef.current.rotation.y -= delta * 0.5;
@@ -128,7 +128,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
 
     // Smooth Lerp transformations based on state
     const lerpSpeed = 0.03;
-    
+
     arc1Ref.current.rotation.x = THREE.MathUtils.lerp(arc1Ref.current.rotation.x, targetArc1RotX, lerpSpeed);
     arc1Ref.current.rotation.y = THREE.MathUtils.lerp(arc1Ref.current.rotation.y, targetArc1RotY, lerpSpeed);
     arc1Ref.current.rotation.z = THREE.MathUtils.lerp(arc1Ref.current.rotation.z, targetArc1RotZ, lerpSpeed);
@@ -142,12 +142,12 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
     arc3Ref.current.rotation.z = THREE.MathUtils.lerp(arc3Ref.current.rotation.z, targetArc3RotZ, lerpSpeed);
 
     groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), lerpSpeed);
-    
+
     // Nodes opacity lerp
     nodesRef.current.children.forEach((child: any) => {
-       if (child.material) {
-           child.material.opacity = THREE.MathUtils.lerp(child.material.opacity, targetNodesOpacity, lerpSpeed);
-       }
+      if (child.material) {
+        child.material.opacity = THREE.MathUtils.lerp(child.material.opacity, targetNodesOpacity, lerpSpeed);
+      }
     });
 
     // Keep position perfectly centered to align with the background eye, 
@@ -158,19 +158,19 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]}>
-      
+
       {/* 1. Abstract Intelligence Core */}
       <group ref={coreRef}>
         <Icosahedron args={[0.5, 0]}>
-           <primitive object={obsidianMaterial} attach="material" />
+          <primitive object={obsidianMaterial} attach="material" />
         </Icosahedron>
         {/* Core geometric cage */}
         <Icosahedron args={[0.6, 1]} >
-           <meshBasicMaterial color="#9E8557" wireframe transparent opacity={0.3} />
+          <meshBasicMaterial color="#9E8557" wireframe transparent opacity={0.3} />
         </Icosahedron>
         {/* Inner light/eye */}
         <Sphere args={[0.1, 16, 16]}>
-           <primitive object={emissiveGoldMaterial} attach="material" />
+          <primitive object={emissiveGoldMaterial} attach="material" />
         </Sphere>
       </group>
 
@@ -178,24 +178,24 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       <group ref={nodesRef}>
         {/* Rings */}
         <Torus args={[1.5, 0.005, 16, 100]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Torus>
-        <Torus args={[1.8, 0.005, 16, 100]} rotation={[Math.PI/4, Math.PI/2, 0]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+        <Torus args={[1.8, 0.005, 16, 100]} rotation={[Math.PI / 4, Math.PI / 2, 0]}>
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Torus>
-        
+
         {/* Traveling mechanical indicators */}
         <Sphere args={[0.06, 16, 16]} position={[1.5, 0, 0]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Sphere>
         <Sphere args={[0.04, 16, 16]} position={[-1.5, 0, 0]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Sphere>
         <Sphere args={[0.08, 16, 16]} position={[0, 1.8, 0]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Sphere>
         <Sphere args={[0.03, 16, 16]} position={[0, -1.8, 0]}>
-           <meshBasicMaterial color="#9E8557" transparent opacity={0} />
+          <meshBasicMaterial color="#9E8557" transparent opacity={0} />
         </Sphere>
       </group>
 
@@ -211,7 +211,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
 
         {/* Inner gold track */}
         <Torus args={[2.3, 0.015, 16, 100]} rotation={[0, 0, Math.PI / 4]}>
-           <primitive object={goldMaterial} attach="material" />
+          <primitive object={goldMaterial} attach="material" />
         </Torus>
       </group>
 
@@ -219,8 +219,8 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       <group ref={arc3Ref}>
 
         {/* Outer gold accent line */}
-        <Torus args={[2.93, 0.02, 16, 100]} rotation={[0, Math.PI/2, 0]}>
-           <primitive object={emissiveGoldMaterial} attach="material" />
+        <Torus args={[2.93, 0.02, 16, 100]} rotation={[0, Math.PI / 2, 0]}>
+          <primitive object={emissiveGoldMaterial} attach="material" />
         </Torus>
       </group>
 
@@ -290,34 +290,34 @@ export default function ServicesShowcase() {
   }, []);
 
   return (
-    <section 
+    <section
       id="services"
       ref={containerRef}
-      className="relative w-full bg-[#050505] text-[#F5F0E6] flex flex-col lg:flex-row z-20 border-t border-[#151515]"
+      className="relative w-full bg-[#050505] text-[#F5F0E6] flex flex-col xl:flex-row z-20 border-t border-[#151515]"
     >
       {/* Sticky 3D Canvas Side */}
-      <div className="w-full lg:w-1/2 h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden">
+      <div className="w-full xl:w-1/2 h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden">
         <div className="mb-12 z-20 relative">
           <span className="text-[9px] font-inter tracking-[0.4em] text-[#9E8557] uppercase bg-[#050505]/50 px-4 py-2 rounded-full border border-[#9E8557]/20 backdrop-blur-md">
-            02 // CORE DISCIPLINES
+            CORE DISCIPLINES
           </span>
         </div>
 
         <div className="flex-1 w-full relative">
           {/* Subtle background glow */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(158,133,87,0.08)_0%,_transparent_70%)] pointer-events-none" />
-          
+
           <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 2]}>
             <color attach="background" args={['#050505']} />
-            
+
             {/* Cinematic Lighting */}
             <ambientLight intensity={0.4} />
             <directionalLight position={[5, 10, 5]} intensity={1.5} color="#ffffff" />
             <directionalLight position={[-5, 5, -5]} intensity={2.5} color="#9E8557" />
             <spotLight position={[0, 8, 4]} intensity={2} angle={0.6} penumbra={1} color="#ffffff" />
-            
+
             <Environment preset="studio" environmentIntensity={0.6} />
-            
+
             <Suspense fallback={null}>
               <FateOrbit activeIndex={activeIndex} />
               <CinematicEnvironment />
@@ -327,12 +327,12 @@ export default function ServicesShowcase() {
       </div>
 
       {/* Scrolling Text Side */}
-      <div className="w-full lg:w-1/2 bg-[#050505]/80 backdrop-blur-xl lg:border-l border-[#151515] relative z-10">
+      <div className="w-full xl:w-1/2 bg-[#050505]/40 xl:bg-[#050505]/80 backdrop-blur-md xl:backdrop-blur-xl xl:border-l border-[#151515] relative z-10">
         {services.map((service, index) => (
-          <div 
+          <div
             key={service.id}
             ref={el => { textSectionsRef.current[index] = el; }}
-            className="min-h-[100vh] flex flex-col justify-center px-6 md:px-20 py-32"
+            className="min-h-[90vh] xl:min-h-[100vh] flex flex-col justify-center px-6 md:px-20 py-20 xl:py-32"
           >
             <div className="service-content">
               <div className="flex items-center gap-6 mb-8">
@@ -343,19 +343,19 @@ export default function ServicesShowcase() {
                   {service.category}
                 </span>
               </div>
-              
+
               <h2 className="text-[2.5rem] md:text-[4rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter mb-10 mix-blend-difference drop-shadow-xl">
                 {service.title}
               </h2>
-              
+
               <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] max-w-md leading-[2] uppercase border-l border-[#9E8557]/30 pl-6 mb-16">
                 {service.desc}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-4 gap-x-8">
                 {service.features.map((feature, i) => (
                   <div key={i} className="flex items-center gap-4">
-                     <div className="w-1 h-1 rounded-full bg-[#151515]" style={{ backgroundColor: i === 0 ? '#9E8557' : '#151515' }} />
+                    <div className="w-1 h-1 rounded-full bg-[#151515]" style={{ backgroundColor: i === 0 ? '#9E8557' : '#151515' }} />
                     <span className="text-[9px] font-inter tracking-[0.2em] uppercase text-[#F5F0E6]">
                       {feature}
                     </span>

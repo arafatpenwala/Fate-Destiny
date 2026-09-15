@@ -55,7 +55,7 @@ export default function PremiumCTA() {
         
         <div className="text-center mb-16 md:mb-32">
           <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-6">
-            08 // INITIATE
+            INITIATE
           </span>
           <h2 className="text-[2.5rem] md:text-[5rem] lg:text-[7rem] font-abeezee font-light leading-none text-[#F5F0E6] uppercase tracking-tighter mix-blend-difference mb-8">
             LET&apos;S BUILD YOUR NEXT <br/>
