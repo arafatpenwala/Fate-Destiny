@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="md:col-span-2 max-w-md flex flex-col items-center md:items-start text-center md:text-left mx-auto md:mx-0">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 relative">
-                 <Image src="/fd-logo.png" alt="Fate & Destiny" fill className="object-contain mix-blend-screen" />
+                 <Image src="/fd-logo.png" alt="" fill className="object-contain mix-blend-screen" />
               </div>
               <span className="font-abeezee text-2xl tracking-[0.2em] font-light text-[#9E8557]">
                 FATE&DESTINY
@@ -51,6 +51,9 @@ export default function Footer() {
             <p className="text-[11px] font-inter text-[#858585] tracking-[0.1em] leading-[2.2] uppercase">
               A premium digital technology studio transforming ambitious ideas into intelligent digital experiences and automated systems. Engineered for scale, designed for impact.
             </p>
+            <a href="mailto:fatedestinyofficials@gmail.com" className="mt-6 text-[11px] font-inter tracking-[0.2em] text-[#9E8557] hover:text-[#F5F0E6] transition-colors duration-300 block">
+              Gmail - fatedestinyofficials@gmail.com
+            </a>
           </div>
 
           {/* Navigation */}

@@ -58,7 +58,7 @@ export default function Navigation() {
             <div className="relative w-12 h-12 md:w-14 md:h-14 opacity-90 group-hover:opacity-100 transition-opacity">
               <Image 
                 src="/fd-logo.png" 
-                alt="FD Logo" 
+                alt="" 
                 fill 
                 className="object-contain mix-blend-screen" 
               />
@@ -98,6 +98,7 @@ export default function Navigation() {
 
             {/* Mobile Toggle */}
             <button
+              aria-label="Open mobile menu"
               className="xl:hidden text-[#F5F0E6] hover:text-[#9E8557] transition-colors"
               onClick={() => setMobileMenuOpen(true)}
             >
@@ -124,6 +125,7 @@ export default function Navigation() {
         }`}
       >
         <button
+          aria-label="Close mobile menu"
           className="absolute top-8 right-8 text-[#F5F0E6] hover:text-[#9E8557] transition-colors duration-300"
           onClick={() => setMobileMenuOpen(false)}
         >
@@ -173,7 +175,7 @@ export default function Navigation() {
           <div className="relative w-8 h-8 opacity-90">
             <Image 
               src="/fd-logo.png" 
-              alt="FD Logo" 
+              alt="" 
               fill 
               className="object-contain mix-blend-screen" 
             />

@@ -47,7 +47,7 @@ export default function TechArchitecture() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(158,133,87,0.1)_0%,_transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
           
           <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
-            <Image src="/fd-logo-gold.png" alt="FD Logo" fill className="object-contain object-right-bottom" />
+            <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
           </div>
           
           <div className="relative z-10 flex flex-col gap-6">
@@ -72,7 +72,7 @@ export default function TechArchitecture() {
           <div className="absolute bottom-0 right-0 w-32 h-32 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(245,240,230,0.1)_0%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
           
           <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
-            <Image src="/fd-logo-gold.png" alt="FD Logo" fill className="object-contain object-right-bottom" />
+            <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
           </div>
           
           <div className="relative z-10 flex flex-col gap-6">
@@ -100,7 +100,7 @@ export default function TechArchitecture() {
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(133,133,133,0.05)_50%,transparent_100%)] bg-[length:100%_200%] bg-top group-hover:bg-bottom transition-all duration-1000 pointer-events-none" />
           
           <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
-            <Image src="/fd-logo-gold.png" alt="FD Logo" fill className="object-contain object-right-bottom" />
+            <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
           </div>
           
           <div className="relative z-10 flex flex-col gap-6">
@@ -126,7 +126,7 @@ export default function TechArchitecture() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-10 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" />
           
           <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
-            <Image src="/fd-logo-gold.png" alt="FD Logo" fill className="object-contain object-right-bottom" />
+            <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
           </div>
           
           <div className="relative z-10 flex flex-col gap-6">

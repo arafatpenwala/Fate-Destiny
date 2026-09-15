@@ -73,6 +73,7 @@ export default function AboutEthos() {
             {/* Filled Text (Revealed on Scroll) */}
             <h2 
               ref={textFillRef}
+              aria-hidden="true"
               className="absolute top-0 left-0 w-full text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter pointer-events-none"
               style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
             >
