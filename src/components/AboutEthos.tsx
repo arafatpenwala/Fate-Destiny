@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function AboutEthos() {
   const containerRef = useRef<HTMLElement>(null);
-  const textFillRef = useRef<HTMLSpanElement>(null);
+  const textFillRef = useRef<HTMLHeadingElement>(null);
   const rightColumnRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
