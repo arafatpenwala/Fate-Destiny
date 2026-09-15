@@ -109,7 +109,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-[#151515] gap-6 w-full">
           <span className="text-[10px] font-inter tracking-[0.2em] text-[#555555] uppercase text-center md:text-left">
-            © {new Date().getFullYear()} FATE&DESTINY STUDIO. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} FATE&DESTINY. ALL RIGHTS RESERVED.
           </span>
           <span className="text-[10px] font-inter tracking-[0.2em] text-[#9E8557] uppercase text-center md:text-right">
             FOUNDER: ARAFAT ZUBAIR PENWALA
