@@ -69,6 +69,13 @@ export default function Chatbot() {
     if (!text.trim() || isProcessing) return;
 
     stopSpeaking();
+    
+    // Unlock iOS Safari Speech Engine by firing a silent synchronous utterance during the click event
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      const unlockUtterance = new SpeechSynthesisUtterance('');
+      unlockUtterance.volume = 0;
+      window.speechSynthesis.speak(unlockUtterance);
+    }
     const userMsg: Message = { id: Date.now().toString(), sender: "user", text };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue("");
@@ -106,7 +113,11 @@ export default function Chatbot() {
     }
   };
 
-  const handleClearConversation = async () => {
+  const handleClearConversation = async (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setMessages([INITIAL_MESSAGE]);
     try {
       await fetch("/api/chat", {
@@ -188,7 +199,7 @@ export default function Chatbot() {
                 <button onClick={() => setIsHandoff(!isHandoff)} className="text-[10px] uppercase text-[#858585] hover:text-[#F5F0E6] px-2">
                   {isHandoff ? "Chat" : "Human"}
                 </button>
-                <button onClick={handleClearConversation} title="Clear Conversation" className="p-2 text-[#858585] hover:text-red-400 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                <button onClick={(e) => handleClearConversation(e)} onTouchEnd={(e) => handleClearConversation(e)} title="Clear Conversation" className="p-3 -m-1 text-[#858585] hover:text-red-400 transition-colors"><Trash2 className="w-4 h-4" /></button>
                 <button onClick={() => setIsMinimized(true)} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><Minus className="w-5 h-5" /></button>
                 <button onClick={() => setIsOpen(false)} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><X className="w-5 h-5" /></button>
               </div>
@@ -401,7 +412,14 @@ export default function Chatbot() {
             exit={{ opacity: 0, scale: 0.8 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => { setIsOpen(true); setIsMinimized(false); }}
+            onClick={() => { 
+              setIsOpen(true); 
+              setIsMinimized(false); 
+              if (!hasSpokenWelcomeRef.current) {
+                hasSpokenWelcomeRef.current = true;
+                speakText(INITIAL_MESSAGE.text);
+              }
+            }}
             className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#050505] border border-[#9E8557]/40 shadow-[0_0_30px_rgba(158,133,87,0.15)] flex items-center justify-center text-[#9E8557] hover:text-[#F5F0E6] transition-colors z-50 group relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#151515] to-[#0A0A0A] z-0" />

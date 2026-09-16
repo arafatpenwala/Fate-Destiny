@@ -81,7 +81,7 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
       utterance.rate = parseFloat(process.env.NEXT_PUBLIC_VOICE_SPEED || "1.0");
       utterance.lang = configuredLang;
       
-      const voices = synthRef.current.getVoices();
+      let voices = synthRef.current.getVoices();
       
       // 1. Try exact configured female voice ID match
       let preferredVoice = voices.find(v => v.name.toLowerCase().includes(configuredVoiceId));
@@ -94,14 +94,23 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
           v.name.toLowerCase().includes("victoria") ||
           v.name.toLowerCase().includes("karen") ||
           v.name.toLowerCase().includes("tessa") ||
-          v.name.toLowerCase().includes("zira") // Windows female voice
+          v.name.toLowerCase().includes("zira") || // Windows
+          v.name.toLowerCase().includes("moira") || // Mac
+          v.name.toLowerCase().includes("fiona") || // Mac
+          v.name.toLowerCase().includes("luciana") || // Mac
+          v.name.toLowerCase().includes("veena") // Mac
         );
       }
 
-      // If absolutely no female voice is found, abort speech to strictly enforce "Female Only"
-      if (!preferredVoice) {
-        console.warn("No female voice found on this device. Falling back to text-only mode.");
-        return; 
+      // 3. Last resort fallback: pick the first available English voice (usually default is female on iOS/Mac)
+      if (!preferredVoice && voices.length > 0) {
+        preferredVoice = voices.find(v => v.lang.startsWith("en")) || voices[0];
+      }
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      } else {
+        console.warn("No voices found on this device yet. The browser might still be loading them.");
       }
 
       utterance.voice = preferredVoice;
