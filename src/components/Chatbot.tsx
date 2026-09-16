@@ -155,14 +155,14 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-10 right-6 md:bottom-12 md:right-8 z-50 flex flex-col items-end font-inter">
+    <div className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end font-inter">
       <AnimatePresence>
         {isOpen && !isMinimized && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.2 } }}
-            className="w-[90vw] max-w-[420px] sm:w-[420px] h-[85vh] max-h-[750px] bg-[#050505]/90 backdrop-blur-2xl border border-[#1A1A1A] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col mb-6 relative"
+            className="w-[92vw] sm:w-[420px] h-[75vh] sm:h-[85vh] max-h-[750px] bg-[#050505]/90 backdrop-blur-2xl border border-[#1A1A1A] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col mb-4 md:mb-6 relative"
           >
             {/* Background Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(158,133,87,0.1)_0%,_transparent_70%)] pointer-events-none" />

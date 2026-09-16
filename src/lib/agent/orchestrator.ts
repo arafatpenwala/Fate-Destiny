@@ -1,7 +1,3 @@
-import { agentConfig } from "../../config/agentConfig";
-import { executeTool } from "./tools/crm";
-import { searchKnowledgeBase } from "../knowledge/rag";
-
 type AgentResponse = {
   text: string;
   toolUsed?: string;
