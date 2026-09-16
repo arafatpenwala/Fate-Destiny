@@ -111,9 +111,8 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
         utterance.voice = preferredVoice;
       } else {
         console.warn("No voices found on this device yet. The browser might still be loading them.");
+        utterance.voice = null;
       }
-
-      utterance.voice = preferredVoice;
 
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
