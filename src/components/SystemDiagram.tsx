@@ -69,8 +69,11 @@ export default function SystemDiagram() {
       </div>
 
       {/* The Diagram Area */}
-      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[800px] lg:h-[1000px] lg:overflow-visible mt-12 lg:mt-32">
-        <div className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.55] lg:scale-[0.70] xl:scale-[0.90] 2xl:scale-100 origin-center">
+      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[400px] sm:h-[600px] md:h-[800px] lg:h-[1000px] lg:overflow-visible mt-12 lg:mt-32">
+        <div 
+          className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center origin-center"
+          style={{ transform: "scale(clamp(0.15, 100vw / 1700, 1))" }}
+        >
 
           {/* Animated Connection Lines (SVG) */}
           <svg ref={linesRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 0px 8px rgba(158,133,87,0.4))" }}>

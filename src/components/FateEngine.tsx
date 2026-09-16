@@ -39,7 +39,7 @@ export default function FateEngine() {
       
       {/* Precision Geometric Frame */}
       <motion.div
-        className="absolute w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] border-[0.5px] border-[#C5A46D]/20 mix-blend-screen"
+        className="absolute w-[60vw] max-w-[350px] h-[60vw] max-h-[350px] md:max-w-[500px] md:max-h-[500px] md:w-[500px] md:h-[500px] border-[0.5px] border-[#C5A46D]/20 mix-blend-screen"
         style={{ borderRadius: "50%" }}
         animate={{ rotateZ: -360, rotateX: 65, rotateY: 25 }}
         transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
@@ -51,7 +51,7 @@ export default function FateEngine() {
 
       {/* Interlocking Structural Rings */}
       <motion.div
-        className="absolute w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] md:w-[700px] md:h-[700px] border-[0.5px] border-[#F4EFE5]/10 mix-blend-screen"
+        className="absolute w-[75vw] max-w-[450px] h-[75vw] max-h-[450px] md:max-w-[700px] md:max-h-[700px] md:w-[700px] md:h-[700px] border-[0.5px] border-[#F4EFE5]/10 mix-blend-screen"
         style={{ borderRadius: "50%" }}
         animate={{ rotateZ: 360, rotateX: 75, rotateY: -15 }}
         transition={{ duration: 75, repeat: Infinity, ease: "linear" }}
@@ -62,7 +62,7 @@ export default function FateEngine() {
 
       {/* Large Outer Architecture */}
       <motion.div
-        className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] md:w-[950px] md:h-[950px] border-[0.5px] border-[#C5A46D]/5"
+        className="absolute w-[90vw] max-w-[600px] h-[90vw] max-h-[600px] md:max-w-[950px] md:max-h-[950px] md:w-[950px] md:h-[950px] border-[0.5px] border-[#C5A46D]/5"
         style={{ borderRadius: "50%", rotateX: 55, rotateY: -25 }}
         animate={{ rotateZ: -360 }}
         transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
@@ -85,7 +85,7 @@ export default function FateEngine() {
         {/* Reticles */}
         <div className="absolute w-8 h-[0.5px] bg-[#C5A46D]/40" />
         <div className="absolute h-8 w-[0.5px] bg-[#C5A46D]/40" />
-        <div className="absolute w-[600px] h-[600px] border-[0.5px] border-[#C5A46D]/5 rounded-full" />
+        <div className="absolute w-[90vw] max-w-[600px] h-[90vw] max-h-[600px] border-[0.5px] border-[#C5A46D]/5 rounded-full" />
       </div>
       
       {/* Mechanical Metadata */}

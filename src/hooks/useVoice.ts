@@ -88,23 +88,23 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
       
       // 2. Fallback to generic known female voices
       if (!preferredVoice) {
+        const femaleNames = [
+          "female", "samantha", "victoria", "karen", "tessa", "zira", "moira", 
+          "fiona", "luciana", "veena", "hazel", "catherine", "susan", "amelie", 
+          "nicky", "ava", "allison", "joelle", "zoe"
+        ];
         preferredVoice = voices.find(v => 
-          v.name.toLowerCase().includes("female") || 
-          v.name.toLowerCase().includes("samantha") ||
-          v.name.toLowerCase().includes("victoria") ||
-          v.name.toLowerCase().includes("karen") ||
-          v.name.toLowerCase().includes("tessa") ||
-          v.name.toLowerCase().includes("zira") || // Windows
-          v.name.toLowerCase().includes("moira") || // Mac
-          v.name.toLowerCase().includes("fiona") || // Mac
-          v.name.toLowerCase().includes("luciana") || // Mac
-          v.name.toLowerCase().includes("veena") // Mac
+          femaleNames.some(name => v.name.toLowerCase().includes(name)) || 
+          v.voiceURI.toLowerCase().includes("female")
         );
       }
 
-      // 3. Last resort fallback: pick the first available English voice (usually default is female on iOS/Mac)
+      // 3. Last resort fallback: pick the first available English voice, but EXCLUDE known male voices
       if (!preferredVoice && voices.length > 0) {
-        preferredVoice = voices.find(v => v.lang.startsWith("en")) || voices[0];
+        const maleNames = ["male", "david", "mark", "daniel", "arthur", "aaron", "bruce", "edward", "alex", "fred", "oliver", "tom", "william"];
+        const englishVoices = voices.filter(v => v.lang.startsWith("en") && !maleNames.some(name => v.name.toLowerCase().includes(name)));
+        // Try to get a non-male English voice, otherwise just take the first English voice, otherwise the first available
+        preferredVoice = englishVoices[0] || voices.find(v => v.lang.startsWith("en")) || voices[0];
       }
 
       if (preferredVoice) {
