@@ -58,16 +58,16 @@ export default function PremiumCTA() {
             INITIATE
           </span>
           <h2 className="text-[2.5rem] md:text-[5rem] lg:text-[7rem] font-abeezee font-light leading-none text-[#F5F0E6] uppercase tracking-tighter mix-blend-difference mb-8">
-            LET&apos;S BUILD YOUR NEXT <br/>
-            <span className="italic text-[#9E8557]">DIGITAL ADVANTAGE.</span>
+            LET&apos;S BUILD SOMETHING <br/>
+            <span className="italic text-[#9E8557]">EXCEPTIONAL.</span>
           </h2>
         </div>
 
         <div className="w-full max-w-5xl flex flex-col">
           {[
-            { id: 1, title: "BUILD AN AI AGENT", action: "INITIATE", desc: "Automate intelligence." },
-            { id: 2, title: "DEVELOP A WEBSITE", action: "START PROJECT", desc: "Engineer the platform." },
-            { id: 3, title: "AUTOMATE A PROCESS", action: "OPTIMIZE", desc: "Streamline workflows." }
+            { id: 1, title: "BUILD A PREMIUM WEBSITE", action: "INITIATE", desc: "Present your business clearly." },
+            { id: 2, title: "REDESIGN YOUR PLATFORM", action: "START PROJECT", desc: "Modernize your digital presence." },
+            { id: 3, title: "CRAFT DIGITAL EXPERIENCES", action: "OPTIMIZE", desc: "Enhance user interactions." }
           ].map((item) => (
             <div 
               key={item.id}

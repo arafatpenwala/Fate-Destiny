@@ -15,20 +15,23 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fatedestinyofficial.com/"),
-  title: "FATE&DESTINY | Premium Websites, AI Automation & AI Agents",
-  description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
+  title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
+  description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
   keywords: [
-    "Full Stack Web Development", 
-    "AI Automation Services", 
-    "AI Agent Development", 
-    "Custom AI Solutions", 
-    "AI-Powered Websites", 
-    "Business Automation", 
-    "FATE&DESTINY"
+    "Premium Website Development",
+    "Custom Website Development",
+    "Web Design & Development",
+    "Business Website Development",
+    "Website Redesign",
+    "E-commerce Website Development",
+    "Real Estate Website Development",
+    "AI-Powered Website Development",
+    "SEO Services",
+    "Digital Experience Design"
   ],
   openGraph: {
-    title: "FATE&DESTINY | Premium Websites, AI Automation & AI Agents",
-    description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
+    title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
+    description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
     url: "https://fatedestinyofficial.com/",
     siteName: "FATE&DESTINY",
     locale: "en_US",
@@ -36,8 +39,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FATE&DESTINY | Premium Websites, AI Automation & AI Agents",
-    description: "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development.",
+    title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
+    description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
+  },
+  alternates: {
+    canonical: "https://fatedestinyofficial.com/",
   },
   robots: {
     index: true,
@@ -54,6 +60,8 @@ export const metadata: Metadata = {
 
 import SmoothScroll from "@/components/SmoothScroll";
 
+import Chatbot from "@/components/Chatbot";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,6 +76,7 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <Chatbot />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -80,14 +89,16 @@ export default function RootLayout({
                   "url": "https://fatedestinyofficial.com/",
                   "logo": "https://fatedestinyofficial.com/fd-logo-gold.png",
                   "image": "https://fatedestinyofficial.com/fd-logo-gold.png",
-                  "description": "FATE&DESTINY is a premium digital systems studio offering full stack custom website development, business AI automation, and AI agent development for visionary businesses globally.",
+                  "description": "FATE&DESTINY creates premium digital experiences, intelligent business systems, and AI-assisted creative solutions for businesses worldwide.",
                   "telephone": "+919372132828",
+                  "email": "fatedestinyofficials@gmail.com",
                   "priceRange": "$$$"
                 },
                 {
                   "@type": "WebSite",
                   "name": "FATE&DESTINY",
-                  "url": "https://fatedestinyofficial.com/"
+                  "url": "https://fatedestinyofficial.com/",
+                  "description": "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide."
                 }
               ]
             })

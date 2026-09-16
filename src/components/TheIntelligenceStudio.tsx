@@ -9,6 +9,91 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const extendedCategories = [
+  {
+    id: "premium-websites",
+    title: "01. PREMIUM WEBSITE DEVELOPMENT",
+    items: [
+      { name: "Premium Website Development", desc: "Premium, responsive websites designed to present your business clearly, build trust, and create meaningful customer interactions." },
+      { name: "Custom Web Applications", desc: "Complex, feature-rich web applications built for specific business requirements." },
+      { name: "Landing Pages", desc: "Focused landing pages designed to communicate one clear offer and guide visitors toward a relevant action." },
+      { name: "Business Website Development" },
+      { name: "Corporate Websites" },
+      { name: "Real Estate Websites" },
+      { name: "Portfolio Websites" },
+      { name: "E-commerce Websites" }
+    ]
+  },
+  {
+    id: "website-redesign",
+    title: "02. WEBSITE REDESIGN & MODERNIZATION",
+    items: [
+      { name: "Website Redesign", desc: "Modern improvements to outdated websites, helping businesses create a clearer, more professional, and mobile-friendly experience." },
+      { name: "UI/UX Modernization", desc: "Thoughtful interface upgrades that make digital products easier to understand, navigate, and use." },
+      { name: "Mobile Optimization", desc: "Ensuring flawless presentation and interaction across all mobile devices." },
+      { name: "Performance Improvements" },
+      { name: "Modern Interactions" },
+      { name: "Animation & Transitions" },
+      { name: "Conversion-Focused Layouts" },
+      { name: "Improved Website Structure" }
+    ]
+  },
+  {
+    id: "ai-digital-experiences",
+    title: "03. AI-POWERED DIGITAL EXPERIENCES",
+    items: [
+      { name: "AI Website Assistants", desc: "Helpful conversational experiences that answer common questions and guide visitors." },
+      { name: "AI Chat Interfaces", desc: "Custom chat solutions seamlessly integrated into your digital platform." },
+      { name: "AI-Powered Search", desc: "Intelligent search capabilities that help users find exactly what they need instantly." },
+      { name: "AI Recommendations" },
+      { name: "Intelligent Website Experiences" },
+      { name: "AI-Powered Content Features" },
+      { name: "AI-Enhanced Customer Experiences" }
+    ]
+  },
+  {
+    id: "seo-visibility",
+    title: "04. SEO & GOOGLE VISIBILITY",
+    items: [
+      { name: "Technical SEO", desc: "Foundational search optimization that helps search engines understand your website." },
+      { name: "On-Page SEO", desc: "Optimizing individual pages to rank higher and earn more relevant traffic in search engines." },
+      { name: "Website Structure Optimization" },
+      { name: "Search Console Setup" },
+      { name: "Sitemap Setup" },
+      { name: "Indexing Optimization" },
+      { name: "Search-Friendly Content Structure" },
+      { name: "Global SEO Foundations" },
+      { name: "Performance Optimization" }
+    ]
+  },
+  {
+    id: "ai-creative",
+    title: "05. AI CREATIVE & CONTENT",
+    items: [
+      { name: "Website Copy", desc: "Professional, engaging text that effectively communicates your brand's value proposition." },
+      { name: "Marketing Content", desc: "Compelling content designed to support your broader digital marketing initiatives." },
+      { name: "Product Visuals", desc: "High-quality, AI-assisted imagery showcasing your offerings in the best light." },
+      { name: "Social Media Creatives" },
+      { name: "Advertising Creatives" },
+      { name: "AI-Assisted Video Content" },
+      { name: "Creative Digital Assets" }
+    ]
+  },
+  {
+    id: "maintenance-growth",
+    title: "06. WEBSITE MAINTENANCE & GROWTH",
+    items: [
+      { name: "Website Updates", desc: "Regular technical updates to keep your platform secure and running smoothly." },
+      { name: "New Sections & Pages", desc: "Expanding your website thoughtfully as your business requirements evolve." },
+      { name: "Continuous Website Development" },
+      { name: "New Features" },
+      { name: "Performance Optimization" },
+      { name: "SEO Improvements" },
+      { name: "Design Improvements" }
+    ]
+  }
+];
+
 // The Premium 3D Robot
 function StudioRobot({ activeCard }: { activeCard: number | null }) {
   const groupRef = useRef<THREE.Group>(null);
@@ -30,13 +115,10 @@ function StudioRobot({ activeCard }: { activeCard: number | null }) {
     let targetY = 0;
 
     if (activeCard !== null) {
-      if (activeCard === 1) { // Right (Full Stack Websites)
-        targetX = -Math.PI / 4;
-        targetY = -0.15;
-      } else if (activeCard === 2) { // Left (AI Automation)
+      if (activeCard === 1 || activeCard === 3 || activeCard === 5) { // Card on Right
         targetX = Math.PI / 4;
         targetY = -0.15;
-      } else if (activeCard === 3) { // Right (AI Agents)
+      } else if (activeCard === 2 || activeCard === 4 || activeCard === 6) { // Card on Left
         targetX = -Math.PI / 4;
         targetY = -0.15;
       }
@@ -179,8 +261,8 @@ export default function TheIntelligenceStudio() {
             end: "bottom 20%",
             onEnter: () => setActiveCard(cardNumber),
             onEnterBack: () => setActiveCard(cardNumber),
-            onLeave: () => setActiveCard(null),
-            onLeaveBack: () => setActiveCard(null),
+            onLeave: () => setActiveCard((prev) => (prev === cardNumber ? null : prev)),
+            onLeaveBack: () => setActiveCard((prev) => (prev === cardNumber ? null : prev)),
           }
         }
       );
@@ -238,13 +320,13 @@ export default function TheIntelligenceStudio() {
         <div className="relative z-10 max-w-[1200px] mx-auto -mt-[100vh]">
           
           {/* Small Spacer so the first card doesn't overlap instantly, but starts appearing as the robot is seen */}
-          <div className="h-[20vh] w-full pointer-events-none" />
+          <div className="h-[20vh] lg:h-[30vh] w-full pointer-events-none" />
 
           {/* Spaced out Services */}
-          <div className="py-16 lg:py-32 px-6">
+          <div className="py-16 lg:py-32 px-6 flex flex-col gap-24 md:gap-32 lg:gap-0">
           
           {/* Service 01 */}
-          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-end service-block">
+          <div className="min-h-[60vh] md:min-h-[50vh] lg:min-h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-end service-block">
             <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
               <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
                 <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
@@ -253,11 +335,16 @@ export default function TheIntelligenceStudio() {
                 SERVICE 01
               </span>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
-                FULL-STACK WEBSITES
+                PREMIUM WEBSITE DEVELOPMENT
               </h3>
               <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
-                High-performance digital experiences engineered from interface to backend, built for scale, speed, and seamless interaction.
+                Custom, responsive websites designed to present your brand clearly, build trust, and create meaningful customer interactions.
               </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Custom Web Applications", "Landing Pages", "Corporate Websites", "E-commerce", "Real Estate Websites"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -271,11 +358,16 @@ export default function TheIntelligenceStudio() {
                 SERVICE 02
               </span>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
-                AI AUTOMATION
+                WEBSITE REDESIGN
               </h3>
               <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
-                Intelligent workflows that connect your tools, eliminate repetitive work, and transform complex operations into seamless systems.
+                Modern improvements to outdated websites, helping businesses create a clearer, more professional, and mobile-friendly experience.
               </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["UI/UX Modernization", "Mobile Optimization", "Performance Improvements", "Modern Interactions", "Conversion-Focused Layouts"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -289,11 +381,85 @@ export default function TheIntelligenceStudio() {
                 SERVICE 03
               </span>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
-                AI AGENTS
+                AI-POWERED EXPERIENCES
               </h3>
               <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
-                Purpose-built intelligent agents that understand, reason, and take action to help businesses work smarter.
+                Intelligent web features designed to assist users, enhance interactions, and create sophisticated digital products.
               </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["AI Website Assistants", "AI Chat Interfaces", "AI-Powered Search", "AI Recommendations", "Intelligent Website Experiences"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Service 04 */}
+          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-start service-block">
+            <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
+              <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
+                <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] lg:text-[#555] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10">
+                SERVICE 04
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
+                SEO & VISIBILITY
+              </h3>
+              <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
+                Foundational search optimization that helps search engines understand your website and improves its technical readiness.
+              </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Technical SEO", "On-Page SEO", "Website Structure", "Search Console Setup", "Sitemap Setup"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Service 05 */}
+          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-end service-block">
+            <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
+              <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
+                <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] lg:text-[#555] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10">
+                SERVICE 05
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
+                AI CREATIVE & CONTENT
+              </h3>
+              <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
+                AI-assisted visuals, promotional assets, and content concepts created to support modern marketing campaigns.
+              </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Website Copy", "Marketing Content", "Product Visuals", "Social Media Creatives", "AI-Assisted Video Content"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Service 06 */}
+          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-start service-block">
+            <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
+              <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
+                <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] lg:text-[#555] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10">
+                SERVICE 06
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
+                MAINTENANCE & GROWTH
+              </h3>
+              <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
+                Ongoing support and iterative improvements to ensure your digital presence remains fast, secure, and competitive.
+              </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Website Updates", "New Sections & Pages", "Continuous Development", "Performance Optimization", "Design Improvements"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
             </div>
           </div>
 

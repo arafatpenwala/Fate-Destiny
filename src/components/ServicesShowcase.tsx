@@ -11,26 +11,135 @@ const services = [
   {
     id: "websites",
     num: "01",
-    title: "DIGITAL ARCHITECTURE",
-    category: "FULL-STACK WEBSITES",
-    desc: "From elegant interfaces to powerful backend systems, we engineer digital experiences built for performance, scale, and impact.",
+    title: "PREMIUM WEBSITES",
+    category: "WEBSITE DEVELOPMENT",
+    desc: "Premium, responsive websites designed to present your business clearly, build trust, and create meaningful customer interactions.",
     features: ["Custom frontend development", "Full-stack web applications", "Backend systems and APIs", "Responsive design", "Authentication and databases", "Deployment and performance optimization"]
   },
   {
-    id: "automation",
+    id: "redesign",
     num: "02",
-    title: "SYSTEM ORCHESTRATION",
-    category: "AI AUTOMATION",
-    desc: "Intelligent workflows that connect your tools, reduce repetitive work, and turn complex operations into seamless systems.",
-    features: ["Business process automation", "AI-powered workflows", "Lead management automation", "CRM integrations", "Document and data processing", "Custom API integrations"]
+    title: "DIGITAL EVOLUTION",
+    category: "WEBSITE REDESIGN",
+    desc: "Modern improvements to outdated websites, helping businesses create a clearer, more professional, and mobile-friendly experience.",
+    features: ["UI/UX modernization", "Mobile optimization", "Performance improvements", "Modern interactions", "Conversion-focused layouts", "Improved website structure"]
   },
   {
-    id: "agents",
+    id: "ai-experiences",
     num: "03",
-    title: "INTELLIGENT SYSTEMS",
-    category: "AI AGENTS",
-    desc: "Purpose-built intelligent agents that understand tasks, use connected tools, and help businesses work smarter.",
-    features: ["Custom AI agents", "Business assistants", "Customer support agents", "AI-powered task execution", "API and tool integrations", "Knowledge-based AI systems"]
+    title: "INTELLIGENT FEATURES",
+    category: "AI-POWERED EXPERIENCES",
+    desc: "Intelligent web features designed to assist users, enhance interactions, and create sophisticated digital products.",
+    features: ["AI website assistants", "AI chat interfaces", "AI-powered search", "AI recommendations", "Intelligent experiences", "AI-enhanced content features"]
+  },
+  {
+    id: "seo",
+    num: "04",
+    title: "DIGITAL DOMINANCE",
+    category: "SEO & VISIBILITY",
+    desc: "Foundational search optimization that helps search engines understand your website and improves its technical readiness.",
+    features: ["Technical SEO", "On-page SEO", "Website structure optimization", "Search Console setup", "Sitemap setup", "Performance optimization"]
+  },
+  {
+    id: "creative",
+    num: "05",
+    title: "VISUAL INTELLIGENCE",
+    category: "AI CREATIVE & CONTENT",
+    desc: "AI-assisted visuals, promotional assets, and content concepts created to support modern marketing campaigns.",
+    features: ["Website copy", "Marketing content", "Social media creatives", "Product visuals", "Advertising creatives", "Creative digital assets"]
+  },
+  {
+    id: "maintenance",
+    num: "06",
+    title: "CONTINUOUS GROWTH",
+    category: "MAINTENANCE & GROWTH",
+    desc: "Ongoing support and iterative improvements to ensure your digital presence remains fast, secure, and competitive.",
+    features: ["Website updates", "New sections & pages", "New features", "Performance tuning", "SEO improvements", "Continuous development"]
+  }
+];
+
+const extendedCategories = [
+  {
+    id: "premium-websites",
+    title: "01. PREMIUM WEBSITE DEVELOPMENT",
+    items: [
+      { name: "Premium Website Development", desc: "Premium, responsive websites designed to present your business clearly, build trust, and create meaningful customer interactions." },
+      { name: "Custom Web Applications", desc: "Complex, feature-rich web applications built for specific business requirements." },
+      { name: "Landing Pages", desc: "Focused landing pages designed to communicate one clear offer and guide visitors toward a relevant action." },
+      { name: "Business Website Development" },
+      { name: "Corporate Websites" },
+      { name: "Real Estate Websites" },
+      { name: "Portfolio Websites" },
+      { name: "E-commerce Websites" }
+    ]
+  },
+  {
+    id: "website-redesign",
+    title: "02. WEBSITE REDESIGN & MODERNIZATION",
+    items: [
+      { name: "Website Redesign", desc: "Modern improvements to outdated websites, helping businesses create a clearer, more professional, and mobile-friendly experience." },
+      { name: "UI/UX Modernization", desc: "Thoughtful interface upgrades that make digital products easier to understand, navigate, and use." },
+      { name: "Mobile Optimization", desc: "Ensuring flawless presentation and interaction across all mobile devices." },
+      { name: "Performance Improvements" },
+      { name: "Modern Interactions" },
+      { name: "Animation & Transitions" },
+      { name: "Conversion-Focused Layouts" },
+      { name: "Improved Website Structure" }
+    ]
+  },
+  {
+    id: "ai-digital-experiences",
+    title: "03. AI-POWERED DIGITAL EXPERIENCES",
+    items: [
+      { name: "AI Website Assistants", desc: "Helpful conversational experiences that answer common questions and guide visitors." },
+      { name: "AI Chat Interfaces", desc: "Custom chat solutions seamlessly integrated into your digital platform." },
+      { name: "AI-Powered Search", desc: "Intelligent search capabilities that help users find exactly what they need instantly." },
+      { name: "AI Recommendations" },
+      { name: "Intelligent Website Experiences" },
+      { name: "AI-Powered Content Features" },
+      { name: "AI-Enhanced Customer Experiences" }
+    ]
+  },
+  {
+    id: "seo-visibility",
+    title: "04. SEO & GOOGLE VISIBILITY",
+    items: [
+      { name: "Technical SEO", desc: "Foundational search optimization that helps search engines understand your website." },
+      { name: "On-Page SEO", desc: "Optimizing individual pages to rank higher and earn more relevant traffic in search engines." },
+      { name: "Website Structure Optimization" },
+      { name: "Search Console Setup" },
+      { name: "Sitemap Setup" },
+      { name: "Indexing Optimization" },
+      { name: "Search-Friendly Content Structure" },
+      { name: "Global SEO Foundations" },
+      { name: "Performance Optimization" }
+    ]
+  },
+  {
+    id: "ai-creative",
+    title: "05. AI CREATIVE & CONTENT",
+    items: [
+      { name: "Website Copy", desc: "Professional, engaging text that effectively communicates your brand's value proposition." },
+      { name: "Marketing Content", desc: "Compelling content designed to support your broader digital marketing initiatives." },
+      { name: "Product Visuals", desc: "High-quality, AI-assisted imagery showcasing your offerings in the best light." },
+      { name: "Social Media Creatives" },
+      { name: "Advertising Creatives" },
+      { name: "AI-Assisted Video Content" },
+      { name: "Creative Digital Assets" }
+    ]
+  },
+  {
+    id: "maintenance-growth",
+    title: "06. WEBSITE MAINTENANCE & GROWTH",
+    items: [
+      { name: "Website Updates", desc: "Regular technical updates to keep your platform secure and running smoothly." },
+      { name: "New Sections & Pages", desc: "Expanding your website thoughtfully as your business requirements evolve." },
+      { name: "Continuous Website Development" },
+      { name: "New Features" },
+      { name: "Performance Optimization" },
+      { name: "SEO Improvements" },
+      { name: "Design Improvements" }
+    ]
   }
 ];
 
@@ -85,7 +194,9 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
     let targetScale = 1;
     let targetNodesOpacity = 0;
 
-    if (activeIndex === 0) {
+    const stateIndex = activeIndex % 3;
+
+    if (stateIndex === 0) {
       // State 1: Digital Architecture (Structured, open)
       targetArc1RotX = Math.PI / 6;
       targetArc1RotY = 0;
@@ -95,7 +206,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       targetArc3RotX = Math.PI / 12;
       targetScale = 0.9;
       targetNodesOpacity = 0.2; // slight nodes
-    } else if (activeIndex === 1) {
+    } else if (stateIndex === 1) {
       // State 2: Automation Flow (Angular, flowing network)
       targetArc1RotX = Math.PI / 4;
       targetArc1RotY = 0;
@@ -109,7 +220,7 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
       // Dynamic flowing motion for nodes
       nodesRef.current.rotation.z -= delta * 1.2;
       nodesRef.current.rotation.y += delta * 0.8;
-    } else if (activeIndex === 2) {
+    } else if (stateIndex === 2) {
       // State 3: AI Agents (Complex intelligence structure)
       targetArc1RotX = Math.PI / 4;
       targetArc1RotY = Math.PI / 6;
@@ -296,8 +407,8 @@ export default function ServicesShowcase() {
       className="relative w-full bg-[#050505] text-[#F5F0E6] flex flex-col xl:flex-row z-20 border-t border-[#151515]"
     >
       {/* Sticky 3D Canvas Side */}
-      <div className="w-full xl:w-1/2 h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden">
-        <div className="mb-12 z-20 relative">
+      <div className="w-full xl:w-1/2 h-[50vh] xl:h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden z-0 pointer-events-none xl:pointer-events-auto">
+        <div className="mb-4 xl:mb-12 z-20 relative pt-16 xl:pt-0">
           <span className="text-[9px] font-inter tracking-[0.4em] text-[#9E8557] uppercase bg-[#050505]/50 px-4 py-2 rounded-full border border-[#9E8557]/20 backdrop-blur-md">
             CORE DISCIPLINES
           </span>
@@ -327,7 +438,7 @@ export default function ServicesShowcase() {
       </div>
 
       {/* Scrolling Text Side */}
-      <div className="w-full xl:w-1/2 bg-[#050505]/40 xl:bg-[#050505]/80 backdrop-blur-md xl:backdrop-blur-xl xl:border-l border-[#151515] relative z-10">
+      <div className="w-full xl:w-1/2 bg-[#050505]/70 xl:bg-[#050505]/80 backdrop-blur-md xl:backdrop-blur-xl xl:border-l border-[#151515] relative z-10 mt-[-10vh] xl:mt-0 pt-[10vh] xl:pt-0">
         {services.map((service, index) => (
           <div
             key={service.id}

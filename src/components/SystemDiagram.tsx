@@ -64,13 +64,13 @@ export default function SystemDiagram() {
           UNIFIED <span className="italic text-[#9E8557]">SYSTEMS.</span>
         </h2>
         <p className="text-[10px] md:text-[12px] font-inter text-[#858585] tracking-[0.2em] max-w-2xl leading-loose uppercase border-t border-[#151515] pt-8">
-          A highly orchestrated triad. Agents reason, interfaces react, and data flows autonomously in perfect synchrony.
+          A highly orchestrated architecture. Interfaces react, platforms scale, and data flows seamlessly in perfect synchrony.
         </p>
       </div>
 
       {/* The Diagram Area */}
-      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[700px] lg:h-[800px] lg:overflow-visible">
-        <div className="relative w-[1200px] h-[800px] shrink-0 flex items-center justify-center scale-[0.55] sm:scale-[0.65] md:scale-[0.75] lg:scale-[0.85] xl:scale-100 origin-center">
+      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[800px] lg:h-[1000px] lg:overflow-visible mt-12 lg:mt-32">
+        <div className="relative w-[1400px] h-[1400px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.55] lg:scale-[0.70] xl:scale-[0.90] 2xl:scale-100 origin-center">
 
           {/* Animated Connection Lines (SVG) */}
           <svg ref={linesRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 0px 8px rgba(158,133,87,0.4))" }}>
@@ -83,100 +83,54 @@ export default function SystemDiagram() {
             </defs>
 
             {/* Orbital Ring Track */}
-            <circle cx="600" cy="400" r="290" fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="10 10" className="animate-[spin_40s_linear_infinite_reverse] origin-[600px_400px]" />
-            <circle cx="600" cy="400" r="290" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.3" className="origin-[600px_400px]" />
+            <circle cx="700" cy="700" r="480" fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="10 10" className="animate-[spin_40s_linear_infinite_reverse] origin-[700px_700px]" />
+            <circle cx="700" cy="700" r="480" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.3" className="origin-[700px_700px]" />
 
             {/* Central Core Connection */}
-            <circle cx="600" cy="400" r="150" fill="none" stroke="#151515" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_20s_linear_infinite] origin-[600px_400px]" />
-            <circle cx="600" cy="400" r="100" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.2" className="animate-[spin_15s_linear_infinite_reverse] origin-[600px_400px]" />
+            <circle cx="700" cy="700" r="220" fill="none" stroke="#151515" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_20s_linear_infinite] origin-[700px_700px]" />
+            <circle cx="700" cy="700" r="160" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.2" className="animate-[spin_15s_linear_infinite_reverse] origin-[700px_700px]" />
           </svg>
 
           {/* Central Logo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-32 h-32 flex items-center justify-center pointer-events-none" style={{ WebkitMaskImage: 'radial-gradient(circle, black 65%, transparent 80%)', maskImage: 'radial-gradient(circle, black 65%, transparent 80%)' }}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-40 h-40 flex items-center justify-center pointer-events-none" style={{ WebkitMaskImage: 'radial-gradient(circle, black 65%, transparent 80%)', maskImage: 'radial-gradient(circle, black 65%, transparent 80%)' }}>
             <div className="w-full h-full bg-[url('/fd-logo-gold.png')] bg-contain bg-center bg-no-repeat mix-blend-screen opacity-90" />
           </div>
 
           {/* Circular Orbit Wrappers */}
+          {[
+            { num: "01", layer: "ARCHITECTURE LAYER", title: "PREMIUM WEBSITE DEVELOPMENT", desc: "Custom, responsive websites designed to present your brand clearly and build trust.", delay: "0s" },
+            { num: "02", layer: "EVOLUTION LAYER", title: "WEBSITE REDESIGN & MODERNIZATION", desc: "Transform outdated websites into modern premium digital experiences.", delay: "-6.66s" },
+            { num: "03", layer: "INTELLIGENCE LAYER", title: "AI-POWERED DIGITAL EXPERIENCES", desc: "Intelligent web features designed to assist users and enhance interactions.", delay: "-13.33s" },
+            { num: "04", layer: "DISCOVERY LAYER", title: "SEO & GOOGLE VISIBILITY", desc: "Foundational search optimization that helps search engines understand your website.", delay: "-20s" },
+            { num: "05", layer: "CREATIVE LAYER", title: "AI CREATIVE & CONTENT", desc: "AI-assisted visuals and content concepts created to support modern marketing.", delay: "-26.66s" },
+            { num: "06", layer: "GROWTH LAYER", title: "WEBSITE MAINTENANCE & GROWTH", desc: "Continuous website development and performance optimization.", delay: "-33.33s" }
+          ].map((node, i) => (
+            <div key={i} className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite', animationDelay: node.delay }}>
+              <div
+                className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
+                style={{ animation: 'spin 40s linear infinite reverse', animationDelay: node.delay }}
+              >
+                <div
+                  ref={el => { nodesRef.current[i] = el; }}
+                  className="w-full h-full bg-gradient-to-br from-[#0A0A0A]/90 to-[#050505]/90 backdrop-blur-xl border border-[#1A1A1A] rounded-[30px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#9E8557]/50 hover:-translate-y-4 transition-all duration-700 group z-10 flex flex-col justify-between overflow-hidden relative"
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,_rgba(158,133,87,0.2)_0%,_transparent_70%)] blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  {/* Bottom Right FD Logo */}
+                  <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-[url('/fd-logo-gold.png')] bg-contain bg-no-repeat opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] mix-blend-screen transition-all duration-700 pointer-events-none z-0" />
 
-        {/* Node 1: Logic */}
-        <div className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite' }}>
-          <div
-            className="absolute top-[-60px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
-            style={{ animation: 'spin 40s linear infinite reverse' }}
-          >
-            <div
-              ref={el => { nodesRef.current[0] = el; }}
-              className="w-full h-full bg-gradient-to-br from-[#0A0A0A]/90 to-[#050505]/90 backdrop-blur-xl border border-[#1A1A1A] rounded-[30px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#9E8557] hover:-translate-y-4 transition-all duration-700 group z-10 flex flex-col justify-between overflow-hidden relative"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,_rgba(158,133,87,0.2)_0%,_transparent_70%)] blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-              {/* Bottom Right FD Logo */}
-              <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-[url('/fd-logo-gold.png')] bg-contain bg-no-repeat opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] mix-blend-screen transition-all duration-700 pointer-events-none z-0" />
-
-              <div>
-                <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10 block">01 // Logic Layer</span>
-                <h3 className="text-3xl md:text-4xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 relative z-10">AI Agents</h3>
+                  <div>
+                    <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10 block">{node.num} // {node.layer}</span>
+                    <h3 className="text-3xl md:text-4xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 relative z-10">{node.title}</h3>
+                  </div>
+                  <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-[2] uppercase relative z-10">
+                    {node.desc}
+                  </p>
+                </div>
               </div>
-              <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-[2] uppercase relative z-10">
-                Autonomous decision engines processing vast logic without human bottlenecks.
-              </p>
             </div>
-          </div>
+          ))}
         </div>
-
-        {/* Node 2: Interface */}
-        <div className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite', animationDelay: '-13.33s' }}>
-          <div
-            className="absolute top-[-60px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
-            style={{ animation: 'spin 40s linear infinite reverse', animationDelay: '-13.33s' }}
-          >
-            <div
-              ref={el => { nodesRef.current[1] = el; }}
-              className="w-full h-full bg-gradient-to-br from-[#0A0A0A]/90 to-[#050505]/90 backdrop-blur-xl border border-[#1A1A1A] rounded-[30px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#F5F0E6]/30 hover:-translate-y-4 transition-all duration-700 group z-10 flex flex-col justify-between overflow-hidden relative"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,_rgba(245,240,230,0.1)_0%,_transparent_70%)] blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-              {/* Bottom Right FD Logo */}
-              <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-[url('/fd-logo-gold.png')] bg-contain bg-no-repeat opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] mix-blend-screen transition-all duration-700 pointer-events-none z-0" />
-
-              <div>
-                <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10 block">02 // Interface Layer</span>
-                <h3 className="text-3xl md:text-4xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 relative z-10">Cinematic Web</h3>
-              </div>
-              <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-[2] uppercase relative z-10">
-                High-performance front-ends rendering dynamic data through premium aesthetics.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Node 3: Data */}
-        <div className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite', animationDelay: '-26.66s' }}>
-          <div
-            className="absolute top-[-60px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
-            style={{ animation: 'spin 40s linear infinite reverse', animationDelay: '-26.66s' }}
-          >
-            <div
-              ref={el => { nodesRef.current[2] = el; }}
-              className="w-full h-full bg-gradient-to-br from-[#0A0A0A]/90 to-[#050505]/90 backdrop-blur-xl border border-[#1A1A1A] rounded-[30px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#555] hover:scale-105 transition-all duration-700 group z-10 flex flex-col justify-between overflow-hidden relative"
-            >
-              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#9E8557]/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 pointer-events-none" />
-
-              {/* Bottom Right FD Logo */}
-              <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-[url('/fd-logo-gold.png')] bg-contain bg-no-repeat opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] mix-blend-screen transition-all duration-700 pointer-events-none z-0" />
-
-              <div>
-                <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10 block">03 // Data Layer</span>
-                <h3 className="text-3xl md:text-4xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 relative z-10">Automated Workflows</h3>
-              </div>
-              <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-[2] uppercase relative z-10">
-                The invisible backbone connecting intelligence to interface with flawless reliability.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
       </div>
 
       <style jsx>{`

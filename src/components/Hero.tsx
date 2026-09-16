@@ -107,7 +107,7 @@ export default function Hero() {
 
             <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full lg:w-4/5 gap-6 lg:gap-10">
               <p className="text-[#858585] font-inter font-light text-[10px] sm:text-[11px] md:text-xs max-w-xs md:max-w-sm leading-loose tracking-wide uppercase">
-                Full-stack digital experiences, intelligent automations, and AI agents engineered for ambitious businesses.
+                Premium websites, digital experiences, and AI-enhanced web solutions engineered for ambitious businesses.
               </p>
             </div>
           </div>

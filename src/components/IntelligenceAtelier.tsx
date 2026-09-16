@@ -160,7 +160,7 @@ export default function IntelligenceAtelier() {
         </h2>
         
         <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-loose uppercase border-l border-[#9E8557]/30 pl-6 max-w-lg mb-16">
-          From autonomous AI agents to sophisticated digital experiences, we engineer intelligent systems that transform ambition into extraordinary execution.
+          From sophisticated websites to modern digital experiences, we engineer digital solutions that transform ambition into extraordinary execution.
         </p>
         
         <button className="flex items-center gap-6 group self-start">

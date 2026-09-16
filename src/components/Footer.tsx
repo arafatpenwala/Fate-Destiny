@@ -49,7 +49,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-[11px] font-inter text-[#858585] tracking-[0.1em] leading-[2.2] uppercase">
-              A premium digital technology studio transforming ambitious ideas into intelligent digital experiences and automated systems. Engineered for scale, designed for impact.
+              FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.
             </p>
             <a href="mailto:fatedestinyofficials@gmail.com" className="mt-6 text-[11px] font-inter tracking-[0.2em] text-[#9E8557] hover:text-[#F5F0E6] transition-colors duration-300 block">
               Gmail - fatedestinyofficials@gmail.com
@@ -70,9 +70,12 @@ export default function Footer() {
           {/* Disciplines */}
           <div className="flex flex-col items-center md:items-start gap-6 text-center md:text-left mt-8 md:mt-0">
             <span className="text-[10px] font-inter tracking-[0.3em] text-[#9E8557] uppercase mb-4">Disciplines</span>
-            <span className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] uppercase">AI Agents</span>
-            <span className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] uppercase">Full-Stack Websites</span>
-            <span className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] uppercase">AI Automation</span>
+            <button onClick={() => scrollTo("#premium-websites")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">Premium Website Development</button>
+            <button onClick={() => scrollTo("#website-redesign")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">Website Redesign</button>
+            <button onClick={() => scrollTo("#ai-digital-experiences")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">AI-Powered Experiences</button>
+            <button onClick={() => scrollTo("#seo-visibility")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">SEO & Visibility</button>
+            <button onClick={() => scrollTo("#ai-creative")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">AI Creative & Content</button>
+            <button onClick={() => scrollTo("#maintenance-growth")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">Maintenance & Growth</button>
           </div>
 
         </div>
