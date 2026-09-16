@@ -426,7 +426,7 @@ export default function ServicesShowcase() {
       className="relative w-full bg-[#050505] text-[#F5F0E6] flex flex-col xl:flex-row z-20 border-t border-[#151515]"
     >
       {/* Sticky 3D Canvas Side */}
-      <div className="w-full xl:w-1/2 h-[50vh] xl:h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden z-0 pointer-events-none xl:pointer-events-auto">
+      <div className="w-full xl:w-1/2 h-screen sticky top-0 flex flex-col p-6 md:p-12 overflow-hidden z-0 pointer-events-none xl:pointer-events-auto">
         <div className="mb-4 xl:mb-12 z-20 relative pt-16 xl:pt-0">
           <span className="text-[9px] font-inter tracking-[0.4em] text-[#9E8557] uppercase bg-[#050505]/50 px-4 py-2 rounded-full border border-[#9E8557]/20 backdrop-blur-md">
             CORE DISCIPLINES
@@ -457,7 +457,7 @@ export default function ServicesShowcase() {
       </div>
 
       {/* Scrolling Text Side */}
-      <div className="w-full xl:w-1/2 bg-[#050505]/70 xl:bg-[#050505]/80 backdrop-blur-md xl:backdrop-blur-xl xl:border-l border-[#151515] relative z-10 mt-[-10vh] xl:mt-0 pt-[10vh] xl:pt-0">
+      <div className="w-full xl:w-1/2 bg-[#050505]/40 xl:bg-[#050505]/80 backdrop-blur-sm xl:backdrop-blur-xl xl:border-l border-[#151515] relative z-10 mt-[-10vh] xl:mt-0 pt-[10vh] xl:pt-0">
         {services.map((service, index) => (
           <div
             key={service.id}

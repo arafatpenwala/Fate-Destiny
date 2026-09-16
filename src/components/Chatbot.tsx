@@ -182,17 +182,14 @@ export default function Chatbot() {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-[#F5F0E6] font-abeezee text-lg leading-tight uppercase tracking-wide">AI Assistant</h3>
-                  <span className="text-[#9E8557] font-inter text-[9px] uppercase tracking-[0.2em] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#9E8557] animate-pulse" />
+                  <h3 className="text-[#F5F0E6] font-abeezee text-lg leading-tight uppercase tracking-wide whitespace-nowrap">AI Assistant</h3>
+                  <span className="text-[#9E8557] font-inter text-[9px] uppercase tracking-[0.2em] flex items-center gap-1 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9E8557] animate-pulse shrink-0" />
                     Agentic System
                   </span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={() => setIsHandoff(!isHandoff)} className="text-[10px] uppercase text-[#858585] hover:text-[#F5F0E6] px-2">
-                  {isHandoff ? "Chat" : "Human"}
-                </button>
                 <button onClick={(e) => handleClearConversation(e)} onTouchEnd={(e) => handleClearConversation(e)} title="Clear Conversation" className="p-3 -m-1 text-[#858585] hover:text-red-400 transition-colors"><Trash2 className="w-4 h-4" /></button>
                 <button onClick={() => { setIsMinimized(true); stopSpeaking(); }} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><Minus className="w-5 h-5" /></button>
                 <button onClick={() => { setIsOpen(false); stopSpeaking(); }} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><X className="w-5 h-5" /></button>

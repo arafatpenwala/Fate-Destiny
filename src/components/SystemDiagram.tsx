@@ -33,11 +33,13 @@ export default function SystemDiagram() {
     // Animate SVG Lines drawing in
     if (linesRef.current) {
       const paths = linesRef.current.querySelectorAll("path");
-      tl.fromTo(paths,
-        { strokeDasharray: "1000", strokeDashoffset: "1000" },
-        { strokeDashoffset: "0", duration: 1.5, stagger: 0.3, ease: "power2.inOut" },
-        "-=1"
-      );
+      if (paths.length > 0) {
+        tl.fromTo(paths,
+          { strokeDasharray: "1000", strokeDashoffset: "1000" },
+          { strokeDashoffset: "0", duration: 1.5, stagger: 0.3, ease: "power2.inOut" },
+          "-=1"
+        );
+      }
     }
 
     return () => {
