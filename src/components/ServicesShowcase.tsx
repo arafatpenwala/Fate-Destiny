@@ -268,7 +268,10 @@ function FateOrbit({ activeIndex }: { activeIndex: number }) {
     arc3Ref.current.rotation.y = THREE.MathUtils.lerp(arc3Ref.current.rotation.y, targetArc3RotY, lerpSpeed);
     arc3Ref.current.rotation.z = THREE.MathUtils.lerp(arc3Ref.current.rotation.z, targetArc3RotZ, lerpSpeed);
 
-    groupRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), lerpSpeed);
+    // Responsive scaling: make it 80% larger on mobile screens because vertical FOV squishes it
+    const isMobile = window.innerWidth < 768;
+    const finalScale = targetScale * (isMobile ? 1.8 : 1);
+    groupRef.current.scale.lerp(new THREE.Vector3(finalScale, finalScale, finalScale), lerpSpeed);
 
     // Nodes opacity lerp
     nodesRef.current.children.forEach((child: any) => {

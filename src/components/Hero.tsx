@@ -100,9 +100,8 @@ export default function Hero() {
         <div ref={textScrollRef} className="w-full px-6 md:px-12 flex flex-col z-20 h-full justify-center lg:justify-end pb-16 lg:pb-32 pointer-events-none mix-blend-difference">
           <div ref={textRef}>
             <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[1.1] md:leading-[0.95] mb-8 lg:mb-12 text-[#F4EFE5] uppercase tracking-tighter">
-              We Build <br />
-              <span className="italic text-[#C5A46D] pr-4">What The Future</span> <br className="hidden md:block" />
-              Has Not Imagined.
+              Your Vision. <br className="hidden md:block" />
+              <span className="italic text-[#C5A46D] pr-4">Our Technology.</span>
             </h1>
 
             <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full lg:w-4/5 gap-6 lg:gap-10">

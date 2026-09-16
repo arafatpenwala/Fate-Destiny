@@ -70,12 +70,6 @@ export default function Chatbot() {
 
     stopSpeaking();
     
-    // Unlock iOS Safari Speech Engine by firing a silent synchronous utterance during the click event
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      const unlockUtterance = new SpeechSynthesisUtterance('');
-      unlockUtterance.volume = 0;
-      window.speechSynthesis.speak(unlockUtterance);
-    }
     const userMsg: Message = { id: Date.now().toString(), sender: "user", text };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue("");
@@ -200,8 +194,8 @@ export default function Chatbot() {
                   {isHandoff ? "Chat" : "Human"}
                 </button>
                 <button onClick={(e) => handleClearConversation(e)} onTouchEnd={(e) => handleClearConversation(e)} title="Clear Conversation" className="p-3 -m-1 text-[#858585] hover:text-red-400 transition-colors"><Trash2 className="w-4 h-4" /></button>
-                <button onClick={() => setIsMinimized(true)} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><Minus className="w-5 h-5" /></button>
-                <button onClick={() => setIsOpen(false)} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><X className="w-5 h-5" /></button>
+                <button onClick={() => { setIsMinimized(true); stopSpeaking(); }} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><Minus className="w-5 h-5" /></button>
+                <button onClick={() => { setIsOpen(false); stopSpeaking(); }} className="p-2 text-[#858585] hover:text-[#F5F0E6] transition-colors"><X className="w-5 h-5" /></button>
               </div>
             </div>
 
@@ -318,6 +312,7 @@ export default function Chatbot() {
                       <input type="email" placeholder="Email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none" />
                       <textarea placeholder="How can we help?" required rows={3} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none resize-none" />
                       <button type="submit" className="w-full bg-[#9E8557] text-[#050505] py-3 rounded-lg text-[12px] font-bold uppercase tracking-wider hover:bg-[#C5A46D] transition-colors mt-2">Submit Request</button>
+                      <button type="button" onClick={() => setIsHandoff(false)} className="w-full bg-transparent border border-[#333] text-[#858585] py-3 rounded-lg text-[12px] uppercase tracking-wider hover:bg-[#151515] hover:text-[#F5F0E6] transition-colors mt-2">Back to AI Chat</button>
                     </form>
                   ) : (
                     <div className="text-center p-8 bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl flex flex-col items-center">

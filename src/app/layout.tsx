@@ -15,32 +15,41 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fatedestinyofficial.com/"),
-  title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
-  description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
+  title: "FATE & DESTINY | Web Development, AI Automation & AI Agents",
+  description: "FATE & DESTINY builds premium full-stack websites, AI automation systems, and intelligent AI agents for businesses worldwide. Turn your vision into powerful digital experiences.",
   keywords: [
-    "Premium Website Development",
-    "Custom Website Development",
-    "Web Design & Development",
-    "Business Website Development",
-    "Website Redesign",
-    "E-commerce Website Development",
-    "Real Estate Website Development",
-    "AI-Powered Website Development",
-    "SEO Services",
-    "Digital Experience Design"
+    "FATE & DESTINY",
+    "web development company",
+    "full stack web development",
+    "custom website development",
+    "AI automation",
+    "business automation",
+    "workflow automation",
+    "AI agents",
+    "agentic AI",
+    "AI development services"
   ],
   openGraph: {
-    title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
-    description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
+    title: "FATE & DESTINY | Web Development, AI Automation & AI Agents",
+    description: "FATE & DESTINY builds premium full-stack websites, AI automation systems, and intelligent AI agents for businesses worldwide. Turn your vision into powerful digital experiences.",
     url: "https://fatedestinyofficial.com/",
-    siteName: "FATE&DESTINY",
+    siteName: "FATE & DESTINY",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/fd-logo-gold.png",
+        width: 1200,
+        height: 630,
+        alt: "FATE & DESTINY Logo",
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "FATE&DESTINY | Premium Website Development & Digital Experiences",
-    description: "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.",
+    title: "FATE & DESTINY | Web Development, AI Automation & AI Agents",
+    description: "FATE & DESTINY builds premium full-stack websites, AI automation systems, and intelligent AI agents for businesses worldwide.",
+    images: ["/fd-logo-gold.png"],
   },
   alternates: {
     canonical: "https://fatedestinyofficial.com/",
@@ -59,7 +68,6 @@ export const metadata: Metadata = {
 };
 
 import SmoothScroll from "@/components/SmoothScroll";
-
 import Chatbot from "@/components/Chatbot";
 
 export default function RootLayout({
@@ -85,20 +93,51 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Organization",
-                  "name": "FATE&DESTINY",
+                  "name": "FATE & DESTINY",
                   "url": "https://fatedestinyofficial.com/",
                   "logo": "https://fatedestinyofficial.com/fd-logo-gold.png",
                   "image": "https://fatedestinyofficial.com/fd-logo-gold.png",
-                  "description": "FATE&DESTINY creates premium digital experiences, intelligent business systems, and AI-assisted creative solutions for businesses worldwide.",
-                  "telephone": "+919372132828",
+                  "description": "FATE & DESTINY builds premium full-stack websites, AI automation systems, and intelligent AI agents for businesses worldwide.",
                   "email": "fatedestinyofficials@gmail.com",
-                  "priceRange": "$$$"
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+919372132828",
+                    "contactType": "customer service",
+                    "areaServed": "Global"
+                  }
                 },
                 {
                   "@type": "WebSite",
-                  "name": "FATE&DESTINY",
+                  "name": "FATE & DESTINY",
                   "url": "https://fatedestinyofficial.com/",
-                  "description": "FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide."
+                  "description": "FATE & DESTINY builds premium full-stack websites, AI automation systems, and intelligent AI agents for businesses worldwide."
+                },
+                {
+                  "@type": "Service",
+                  "name": "Full Stack Website Development",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "FATE & DESTINY"
+                  },
+                  "description": "Premium, responsive websites designed to present your business clearly, build trust, and create meaningful customer interactions."
+                },
+                {
+                  "@type": "Service",
+                  "name": "AI Automation",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "FATE & DESTINY"
+                  },
+                  "description": "Intelligent AI-powered workflows that automate repetitive business processes, connect your tools, and reduce manual work."
+                },
+                {
+                  "@type": "Service",
+                  "name": "Agentic AI",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "FATE & DESTINY"
+                  },
+                  "description": "Intelligent AI agents that understand tasks, make decisions within defined boundaries, use connected tools, and take actions to complete business workflows."
                 }
               ]
             })

@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 
 // Using Web Speech API for fallback voice capabilities
 export function useVoice(onTranscriptionResult: (text: string) => void) {
@@ -8,6 +8,23 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
   
   const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
+  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+
+  // Load voices early to prevent the empty array bug on first click
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      synthRef.current = window.speechSynthesis;
+      
+      const loadVoices = () => {
+        voicesRef.current = window.speechSynthesis.getVoices();
+      };
+      
+      loadVoices();
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+      }
+    }
+  }, []);
 
   // Initialize Speech Recognition
   const initRecognition = useCallback(() => {
@@ -37,13 +54,6 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
     }
   }, [onTranscriptionResult]);
 
-  // Initialize Speech Synthesis
-  const initSynthesis = useCallback(() => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      synthRef.current = window.speechSynthesis;
-    }
-  }, []);
-
   const startListening = useCallback(() => {
     setError(null);
     if (!recognitionRef.current) initRecognition();
@@ -66,14 +76,13 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
   }, [isListening]);
 
   const speakText = useCallback((text: string) => {
-    if (!synthRef.current) initSynthesis();
+    if (!synthRef.current) return;
     
-    if (synthRef.current) {
-      synthRef.current.cancel(); // cancel current speech
+    // Function to actually execute the speech once voices are verified
+    const executeSpeech = (availableVoices: SpeechSynthesisVoice[]) => {
+      synthRef.current?.cancel(); // cancel current speech
       
       const utterance = new SpeechSynthesisUtterance(text);
-      
-      // Use Env Config if available, otherwise fallback
       const configuredVoiceId = process.env.NEXT_PUBLIC_FEMALE_VOICE_ID?.toLowerCase() || "samantha";
       const configuredLang = process.env.NEXT_PUBLIC_VOICE_LANGUAGE || "en-US";
       
@@ -81,10 +90,8 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
       utterance.rate = parseFloat(process.env.NEXT_PUBLIC_VOICE_SPEED || "1.0");
       utterance.lang = configuredLang;
       
-      let voices = synthRef.current.getVoices();
-      
       // 1. Try exact configured female voice ID match
-      let preferredVoice = voices.find(v => v.name.toLowerCase().includes(configuredVoiceId));
+      let preferredVoice = availableVoices.find(v => v.name.toLowerCase().includes(configuredVoiceId));
       
       // 2. Fallback to generic known female voices
       if (!preferredVoice) {
@@ -93,34 +100,47 @@ export function useVoice(onTranscriptionResult: (text: string) => void) {
           "fiona", "luciana", "veena", "hazel", "catherine", "susan", "amelie", 
           "nicky", "ava", "allison", "joelle", "zoe"
         ];
-        preferredVoice = voices.find(v => 
+        preferredVoice = availableVoices.find(v => 
           femaleNames.some(name => v.name.toLowerCase().includes(name)) || 
           v.voiceURI.toLowerCase().includes("female")
         );
       }
 
       // 3. Last resort fallback: pick the first available English voice, but EXCLUDE known male voices
-      if (!preferredVoice && voices.length > 0) {
+      if (!preferredVoice && availableVoices.length > 0) {
         const maleNames = ["male", "david", "mark", "daniel", "arthur", "aaron", "bruce", "edward", "alex", "fred", "oliver", "tom", "william"];
-        const englishVoices = voices.filter(v => v.lang.startsWith("en") && !maleNames.some(name => v.name.toLowerCase().includes(name)));
-        // Try to get a non-male English voice, otherwise just take the first English voice, otherwise the first available
-        preferredVoice = englishVoices[0] || voices.find(v => v.lang.startsWith("en")) || voices[0];
+        const englishVoices = availableVoices.filter(v => v.lang.startsWith("en") && !maleNames.some(name => v.name.toLowerCase().includes(name)));
+        preferredVoice = englishVoices[0] || availableVoices.find(v => v.lang.startsWith("en")) || availableVoices[0];
       }
 
       if (preferredVoice) {
         utterance.voice = preferredVoice;
-      } else {
-        console.warn("No voices found on this device yet. The browser might still be loading them.");
-        utterance.voice = null;
       }
 
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
       utterance.onerror = () => setIsSpeaking(false);
 
-      synthRef.current.speak(utterance);
+      synthRef.current?.speak(utterance);
+    };
+
+    let voices = synthRef.current.getVoices();
+    
+    // If voices haven't loaded yet (safari/chrome bug), wait briefly
+    if (voices.length === 0) {
+      let retries = 0;
+      const interval = setInterval(() => {
+        voices = synthRef.current!.getVoices();
+        if (voices.length > 0 || retries > 10) {
+          clearInterval(interval);
+          executeSpeech(voices);
+        }
+        retries++;
+      }, 100);
+    } else {
+      executeSpeech(voices);
     }
-  }, [initSynthesis]);
+  }, []);
 
   const stopSpeaking = useCallback(() => {
     if (synthRef.current) {

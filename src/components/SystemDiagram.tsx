@@ -49,7 +49,7 @@ export default function SystemDiagram() {
     <section
       id="system"
       ref={containerRef}
-      className="relative min-h-[70vh] lg:min-h-[120vh] w-full bg-[#050505] flex flex-col items-center justify-center overflow-hidden z-20 border-t border-[#151515] pt-24 pb-48 md:py-32"
+      className="relative min-h-[70vh] lg:min-h-[120vh] w-full bg-[#050505] flex flex-col items-center justify-center overflow-hidden z-20 border-t border-[#151515] pt-24 pb-48 lg:py-24"
     >
       {/* Background Matrix */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#9E8557 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -69,11 +69,8 @@ export default function SystemDiagram() {
       </div>
 
       {/* The Diagram Area */}
-      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[400px] sm:h-[600px] md:h-[800px] lg:h-[1000px] lg:overflow-visible mt-12 lg:mt-32">
-        <div 
-          className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center origin-center"
-          style={{ transform: "scale(clamp(0.15, 100vw / 1700, 1))" }}
-        >
+      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[800px] lg:h-[800px] xl:h-[900px] lg:overflow-visible mt-12 lg:mt-24">
+        <div className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.50] lg:scale-[0.55] xl:scale-[0.65] 2xl:scale-[0.75] origin-center">
 
           {/* Animated Connection Lines (SVG) */}
           <svg ref={linesRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 0px 8px rgba(158,133,87,0.4))" }}>

@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="md:col-span-2 max-w-md flex flex-col items-center md:items-start text-center md:text-left mx-auto md:mx-0">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 relative">
-                 <Image src="/fd-logo.png" alt="" fill className="object-contain mix-blend-screen" />
+                 <Image src="/fd-logo.png" alt="FATE & DESTINY Logo" fill className="object-contain mix-blend-screen" />
               </div>
               <span className="font-abeezee text-2xl tracking-[0.2em] font-light text-[#9E8557]">
                 FATE&DESTINY
@@ -92,13 +92,14 @@ export default function Footer() {
           }}
         >
           {/* Base Dark Text */}
-          <h1 className="text-[9.5vw] sm:text-[11vw] md:text-[8.5vw] font-abeezee font-bold uppercase tracking-tighter leading-none text-[#111111] w-full text-center whitespace-nowrap">
+          <div className="text-[9.5vw] sm:text-[11vw] md:text-[8.5vw] font-abeezee font-bold uppercase tracking-tighter leading-none text-[#111111] w-full text-center whitespace-nowrap" aria-hidden="true">
             FATE & DESTINY
-          </h1>
+          </div>
           
           {/* Golden Reveal Layer */}
-          <h1 
+          <div 
             className="absolute inset-0 text-[9.5vw] sm:text-[11vw] md:text-[8.5vw] font-abeezee font-bold uppercase tracking-tighter leading-none w-full text-center whitespace-nowrap opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            aria-hidden="true"
             style={{
               background: "radial-gradient(circle 350px at var(--x, 50%) var(--y, 50%), #C5A46D 0%, #9E8557 20%, transparent 80%)",
               WebkitBackgroundClip: "text",
@@ -108,7 +109,7 @@ export default function Footer() {
             }}
           >
             FATE & DESTINY
-          </h1>
+          </div>
         </div>
 
         {/* Bottom Bar */}
