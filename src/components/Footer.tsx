@@ -76,6 +76,8 @@ export default function Footer() {
             <button onClick={() => scrollTo("#seo-visibility")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">SEO & Visibility</button>
             <button onClick={() => scrollTo("#ai-creative")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">AI Creative & Content</button>
             <button onClick={() => scrollTo("#maintenance-growth")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">Maintenance & Growth</button>
+            <button onClick={() => scrollTo("#ai-automation")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">AI Automation</button>
+            <button onClick={() => scrollTo("#agentic-ai")} className="text-[13px] font-inter tracking-[0.2em] text-[#9B9B9B] hover:text-[#F5F0E6] hover:-translate-y-1 md:hover:translate-y-0 md:hover:translate-x-2 transition-all duration-300 uppercase">Agentic AI</button>
           </div>
 
         </div>

@@ -55,6 +55,22 @@ const services = [
     category: "MAINTENANCE & GROWTH",
     desc: "Ongoing support and iterative improvements to ensure your digital presence remains fast, secure, and competitive.",
     features: ["Website updates", "New sections & pages", "New features", "Performance tuning", "SEO improvements", "Continuous development"]
+  },
+  {
+    id: "ai-automation",
+    num: "07",
+    title: "AI AUTOMATION",
+    category: "AI AUTOMATION",
+    desc: "Intelligent AI-powered workflows that automate repetitive business processes, connect your tools, and reduce manual work.",
+    features: ["Workflow automation", "API integrations", "Repetitive task reduction", "Data synchronization", "Custom automation scripts", "Efficiency optimization"]
+  },
+  {
+    id: "agentic-ai",
+    num: "08",
+    title: "AGENTIC AI",
+    category: "AGENTIC AI",
+    desc: "Intelligent AI agents that understand tasks, make decisions within defined boundaries, use connected tools, and take actions to complete business workflows.",
+    features: ["Autonomous agents", "Task execution", "Decision making", "Tool integration", "Workflow completion", "Intelligent behavior"]
   }
 ];
 

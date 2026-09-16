@@ -70,7 +70,7 @@ export default function SystemDiagram() {
 
       {/* The Diagram Area */}
       <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[800px] lg:h-[1000px] lg:overflow-visible mt-12 lg:mt-32">
-        <div className="relative w-[1400px] h-[1400px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.55] lg:scale-[0.70] xl:scale-[0.90] 2xl:scale-100 origin-center">
+        <div className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.55] lg:scale-[0.70] xl:scale-[0.90] 2xl:scale-100 origin-center">
 
           {/* Animated Connection Lines (SVG) */}
           <svg ref={linesRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 0px 8px rgba(158,133,87,0.4))" }}>
@@ -83,12 +83,12 @@ export default function SystemDiagram() {
             </defs>
 
             {/* Orbital Ring Track */}
-            <circle cx="700" cy="700" r="480" fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="10 10" className="animate-[spin_40s_linear_infinite_reverse] origin-[700px_700px]" />
-            <circle cx="700" cy="700" r="480" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.3" className="origin-[700px_700px]" />
+            <circle cx="800" cy="800" r="600" fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="10 10" className="animate-[spin_40s_linear_infinite_reverse] origin-[800px_800px]" />
+            <circle cx="800" cy="800" r="600" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.3" className="origin-[800px_800px]" />
 
             {/* Central Core Connection */}
-            <circle cx="700" cy="700" r="220" fill="none" stroke="#151515" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_20s_linear_infinite] origin-[700px_700px]" />
-            <circle cx="700" cy="700" r="160" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.2" className="animate-[spin_15s_linear_infinite_reverse] origin-[700px_700px]" />
+            <circle cx="800" cy="800" r="280" fill="none" stroke="#151515" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_20s_linear_infinite] origin-[800px_800px]" />
+            <circle cx="800" cy="800" r="220" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.2" className="animate-[spin_15s_linear_infinite_reverse] origin-[800px_800px]" />
           </svg>
 
           {/* Central Logo */}
@@ -99,15 +99,17 @@ export default function SystemDiagram() {
           {/* Circular Orbit Wrappers */}
           {[
             { num: "01", layer: "ARCHITECTURE LAYER", title: "PREMIUM WEBSITE DEVELOPMENT", desc: "Custom, responsive websites designed to present your brand clearly and build trust.", delay: "0s" },
-            { num: "02", layer: "EVOLUTION LAYER", title: "WEBSITE REDESIGN & MODERNIZATION", desc: "Transform outdated websites into modern premium digital experiences.", delay: "-6.66s" },
-            { num: "03", layer: "INTELLIGENCE LAYER", title: "AI-POWERED DIGITAL EXPERIENCES", desc: "Intelligent web features designed to assist users and enhance interactions.", delay: "-13.33s" },
-            { num: "04", layer: "DISCOVERY LAYER", title: "SEO & GOOGLE VISIBILITY", desc: "Foundational search optimization that helps search engines understand your website.", delay: "-20s" },
-            { num: "05", layer: "CREATIVE LAYER", title: "AI CREATIVE & CONTENT", desc: "AI-assisted visuals and content concepts created to support modern marketing.", delay: "-26.66s" },
-            { num: "06", layer: "GROWTH LAYER", title: "WEBSITE MAINTENANCE & GROWTH", desc: "Continuous website development and performance optimization.", delay: "-33.33s" }
+            { num: "02", layer: "EVOLUTION LAYER", title: "WEBSITE REDESIGN & MODERNIZATION", desc: "Transform outdated websites into modern premium digital experiences.", delay: "-5s" },
+            { num: "03", layer: "INTELLIGENCE LAYER", title: "AI-POWERED DIGITAL EXPERIENCES", desc: "Intelligent web features designed to assist users and enhance interactions.", delay: "-10s" },
+            { num: "04", layer: "DISCOVERY LAYER", title: "SEO & GOOGLE VISIBILITY", desc: "Foundational search optimization that helps search engines understand your website.", delay: "-15s" },
+            { num: "05", layer: "CREATIVE LAYER", title: "AI CREATIVE & CONTENT", desc: "AI-assisted visuals and content concepts created to support modern marketing.", delay: "-20s" },
+            { num: "06", layer: "GROWTH LAYER", title: "WEBSITE MAINTENANCE & GROWTH", desc: "Continuous website development and performance optimization.", delay: "-25s" },
+            { num: "07", layer: "AUTOMATION LAYER", title: "AI AUTOMATION", desc: "Intelligent AI-powered workflows that automate repetitive business processes and connect your tools.", delay: "-30s" },
+            { num: "08", layer: "AUTONOMOUS LAYER", title: "AGENTIC AI", desc: "Intelligent AI agents that understand tasks, make decisions, and take actions to complete workflows.", delay: "-35s" }
           ].map((node, i) => (
             <div key={i} className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite', animationDelay: node.delay }}>
               <div
-                className="absolute top-[50px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
+                className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
                 style={{ animation: 'spin 40s linear infinite reverse', animationDelay: node.delay }}
               >
                 <div

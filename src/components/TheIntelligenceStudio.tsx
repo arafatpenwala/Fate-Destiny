@@ -463,6 +463,52 @@ export default function TheIntelligenceStudio() {
             </div>
           </div>
 
+          {/* Service 07 */}
+          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-end service-block">
+            <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
+              <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
+                <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] lg:text-[#555] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10">
+                SERVICE 07
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
+                AI AUTOMATION
+              </h3>
+              <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
+                Intelligent AI-powered workflows that automate repetitive business processes, connect your tools, and reduce manual work.
+              </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Workflow Automation", "API Integrations", "Repetitive Task Reduction", "Data Synchronization", "Custom Automation Scripts"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Service 08 */}
+          <div className="min-h-[50vh] lg:h-[80vh] py-16 lg:py-0 flex items-center justify-center lg:justify-start service-block">
+            <div className="group flex flex-col items-start text-left border border-[#F5F0E6]/20 lg:border-[#F5F0E6]/10 bg-black/70 lg:bg-black/20 backdrop-blur-md lg:backdrop-blur-sm hover:border-[#9E8557]/50 hover:bg-black/80 lg:hover:bg-black/40 p-8 md:p-12 lg:p-12 transition-all duration-700 cursor-pointer w-full max-w-xl rounded-3xl mx-2 md:mx-6 lg:mx-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] lg:shadow-none relative z-10">
+              <div className="absolute bottom-0 right-0 w-32 h-32 md:w-56 md:h-56 opacity-[0.15] lg:opacity-[0.05] lg:group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none z-0">
+                <Image src="/fd-logo-gold.png" alt="" fill className="object-contain object-right-bottom" />
+              </div>
+              <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] lg:text-[#555] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10">
+                SERVICE 08
+              </span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 relative z-10">
+                AGENTIC AI
+              </h3>
+              <p className="text-[12px] md:text-[14px] font-inter text-[#9B9B9B] lg:text-[#858585] tracking-[0.1em] leading-[2] uppercase mb-4 lg:mb-8 relative z-10">
+                Intelligent AI agents that understand tasks, make decisions within defined boundaries, use connected tools, and take actions to complete business workflows.
+              </p>
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {["Autonomous Agents", "Task Execution", "Decision Making", "Tool Integration", "Workflow Completion"].map((item, i) => (
+                   <span key={i} className="text-[9px] font-inter border border-[#9E8557]/30 px-3 py-1 rounded-full text-[#F5F0E6] uppercase bg-black/40 group-hover:bg-[#9E8557]/10 transition-colors duration-300">{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
         </div>
       </div>
