@@ -95,7 +95,7 @@ async function _processUserMessage(
   // --- INTENT ROUTING (Specific first, then general) ---
 
   // 3. COMPANY INFO
-  if (has(/what is fate&destiny|what is fate and destiny|who are you|what do you do|what services do you provide|what does fate&destiny offer|are you an agency/)) {
+  if (has(/what is fate&destiny|what is fate and destiny|who are you|what do you do|what services do you provide|what services do you offer|what does fate&destiny offer|are you an agency/)) {
     return { 
       text: "FATE&DESTINY focuses on premium full-stack websites, AI automation, and AI agents designed around business requirements.",
       options: ["🚀 I need a premium website", "⚙️ I want AI automation", "🤖 I need an AI agent"]
