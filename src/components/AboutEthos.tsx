@@ -49,7 +49,7 @@ export default function AboutEthos() {
     <section 
       id="about"
       ref={containerRef}
-      className="relative w-full h-[100dvh] bg-[#050505] flex items-center justify-center px-6 md:px-12 lg:px-24 z-20 overflow-hidden border-t border-[#151515]"
+      className="relative w-full min-h-[100dvh] py-24 bg-[#050505] flex items-center justify-center px-6 md:px-12 lg:px-24 z-20 overflow-hidden border-t border-[#151515]"
     >
       {/* Dynamic Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(158,133,87,0.05)_0%,_transparent_70%)] pointer-events-none" />
@@ -64,22 +64,24 @@ export default function AboutEthos() {
           
           <div className="relative">
             {/* Outline Text (Always Visible) */}
-            <h2 className="text-[2.75rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-transparent uppercase tracking-tighter" style={{ WebkitTextStroke: '1px rgba(245,240,230,0.1)' }}>
-              WE ENGINEER<br />
-              DIGITAL<br />
-              DOMINANCE.
+            <h2 className="text-[2.25rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[4.5rem] xl:text-[5.5rem] font-abeezee font-light leading-[1] text-transparent uppercase tracking-tighter" style={{ WebkitTextStroke: '1px rgba(245,240,230,0.1)' }}>
+              WHERE DIGITAL<br />
+              EXPERIENCE MEETS<br />
+              INTELLIGENT<br />
+              TECHNOLOGY.
             </h2>
             
             {/* Filled Text (Revealed on Scroll) */}
             <h2 
               ref={textFillRef}
               aria-hidden="true"
-              className="absolute top-0 left-0 w-full text-[2.75rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7.5rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter pointer-events-none"
+              className="absolute top-0 left-0 w-full text-[2.25rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[4.5rem] xl:text-[5.5rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter pointer-events-none"
               style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }}
             >
-              WE ENGINEER<br />
-              <span className="text-[#9E8557]">DIGITAL</span><br />
-              DOMINANCE.
+              WHERE DIGITAL<br />
+              <span className="text-[#9E8557]">EXPERIENCE MEETS</span><br />
+              INTELLIGENT<br />
+              TECHNOLOGY.
             </h2>
           </div>
         </div>
@@ -92,11 +94,7 @@ export default function AboutEthos() {
           <div className="w-12 md:w-16 h-[1px] bg-[#9E8557]/50 mb-2 md:mb-4" />
           
           <p className="text-[13px] md:text-[15px] lg:text-[13px] xl:text-[16px] font-inter text-[#F5F0E6] tracking-[0.1em] leading-[2] md:leading-[2.2] uppercase">
-            Fate & Destiny is not an agency. We are a private digital atelier operating at the bleeding edge of software engineering and artificial intelligence.
-          </p>
-          
-          <p className="text-[11px] md:text-[13px] lg:text-[11px] xl:text-[14px] font-inter text-[#858585] tracking-[0.1em] leading-[1.8] md:leading-[2] uppercase">
-            We partner exclusively with visionaries who refuse to settle for mediocrity. Our systems are bespoke, our code is ruthless, and our designs are engineered to obliterate the competition. 
+            FATE&DESTINY combines premium web development, automation, and AI to help businesses create stronger digital experiences and smarter operations.
           </p>
         </div>
 

@@ -17,12 +17,12 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#050505] text-[#F5F0E6] pt-16 pb-8 border-t border-[#151515] relative z-20 overflow-hidden">
-      
+
       {/* Background radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[radial-gradient(ellipse_at_top,_rgba(158,133,87,0.05)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-        
+
         {/* Top CTA Section */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end text-center md:text-left border-b border-[#151515] pb-8 mb-8 gap-12">
           <div className="w-full flex flex-col items-center md:items-start">
@@ -37,23 +37,23 @@ export default function Footer() {
 
         {/* Links Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-24">
-          
+
           {/* Brand Info */}
           <div className="md:col-span-2 max-w-md flex flex-col items-center md:items-start text-center md:text-left mx-auto md:mx-0">
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-4">
               <div className="w-16 h-16 relative">
-                 <Image src="/fd-logo.png" alt="FATE & DESTINY Logo" fill className="object-contain mix-blend-screen" />
+                <Image src="/fd-logo.png" alt="FATE & DESTINY Logo" fill className="object-contain mix-blend-screen" />
               </div>
               <span className="font-abeezee text-2xl tracking-[0.2em] font-light text-[#9E8557]">
                 FATE&DESTINY
               </span>
             </div>
+            <span className="text-[10px] font-inter tracking-[0.3em] text-[#9E8557] uppercase block mb-2">
+              Serving Clients Worldwide
+            </span>
             <p className="text-[11px] font-inter text-[#858585] tracking-[0.1em] leading-[2.2] uppercase">
-              FATE&DESTINY creates premium websites, digital experiences, SEO, AI-enhanced solutions, branding, and creative content for businesses worldwide.
+              FATE&DESTINY works with businesses worldwide, delivering premium websites, intelligent automation, and AI-powered solutions remotely.
             </p>
-            <a href="mailto:fatedestinyofficials@gmail.com" className="mt-6 text-[11px] font-inter tracking-[0.2em] text-[#9E8557] hover:text-[#F5F0E6] transition-colors duration-300 block">
-              Gmail - fatedestinyofficials@gmail.com
-            </a>
           </div>
 
           {/* Navigation */}
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
 
         {/* Massive Typography */}
-        <div 
+        <div
           className="w-full relative flex items-center justify-center overflow-hidden mb-12 select-none group cursor-crosshair"
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
@@ -95,9 +95,9 @@ export default function Footer() {
           <div className="text-[9.5vw] sm:text-[11vw] md:text-[8.5vw] font-abeezee font-bold uppercase tracking-tighter leading-none text-[#111111] w-full text-center whitespace-nowrap" aria-hidden="true">
             FATE & DESTINY
           </div>
-          
+
           {/* Golden Reveal Layer */}
-          <div 
+          <div
             className="absolute inset-0 text-[9.5vw] sm:text-[11vw] md:text-[8.5vw] font-abeezee font-bold uppercase tracking-tighter leading-none w-full text-center whitespace-nowrap opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
             aria-hidden="true"
             style={{

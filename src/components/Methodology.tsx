@@ -7,22 +7,22 @@ const steps = [
   {
     num: "01",
     title: "DISCOVER",
-    desc: "Understand the business, goals, challenges, and vision. We map the constraints and define the precise digital requirements.",
+    desc: "Understand your business, goals, audience, and requirements.",
   },
   {
     num: "02",
-    title: "DESIGN",
-    desc: "Create a distinctive digital experience and system architecture. Every interface and workflow is designed for intent and impact.",
+    title: "STRATEGIZE",
+    desc: "Define the right digital, automation, or AI solution for your needs.",
   },
   {
     num: "03",
-    title: "ENGINEER",
-    desc: "Build the frontend, backend, AI systems, and automation workflows. Code is written for scale, speed, and absolute reliability.",
+    title: "BUILD",
+    desc: "Design and develop the solution around your requirements.",
   },
   {
     num: "04",
-    title: "DEPLOY",
-    desc: "Test, optimize, and prepare the final digital solution for real-world use. The system goes live seamlessly.",
+    title: "LAUNCH",
+    desc: "Test, refine, and prepare the solution for real-world use.",
   }
 ];
 

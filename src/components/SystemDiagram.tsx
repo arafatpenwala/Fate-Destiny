@@ -60,13 +60,13 @@ export default function SystemDiagram() {
       {/* Typography Header */}
       <div className="relative w-full max-w-[1400px] px-6 md:px-12 z-30 mb-12 flex flex-col items-center text-center">
         <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-6 animate-pulse">
-          THE ARCHITECTURE
+          MORE THAN A WEBSITE
         </span>
-        <h2 className="text-[3rem] md:text-[5rem] lg:text-[7rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter mix-blend-difference mb-8">
-          UNIFIED <span className="italic text-[#9E8557]">SYSTEMS.</span>
+        <h2 className="text-[3rem] md:text-[5rem] lg:text-[6rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter mix-blend-difference mb-8">
+          A DIGITAL SYSTEM <span className="italic text-[#9E8557]">BUILT AROUND YOUR BUSINESS.</span>
         </h2>
         <p className="text-[10px] md:text-[12px] font-inter text-[#858585] tracking-[0.2em] max-w-2xl leading-loose uppercase border-t border-[#151515] pt-8">
-          A highly orchestrated architecture. Interfaces react, platforms scale, and data flows seamlessly in perfect synchrony.
+          We combine premium web development, intelligent automation, and AI to create digital solutions designed around how your business actually operates.
         </p>
       </div>
 

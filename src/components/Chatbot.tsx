@@ -17,7 +17,7 @@ type Message = {
 const INITIAL_MESSAGE: Message = {
   id: "msg_welcome",
   sender: "bot",
-  text: "Hello, welcome to FATE&DESTINY. I'm your AI assistant. I can tell you about our website development, AI automation, and Agentic AI services. How can I help you today?"
+  text: "Welcome to FATE&DESTINY.\nI’m your AI assistant. I can help you explore our digital solutions, understand what your business needs, or answer any questions you have.\n\nWhat would you like to explore?"
 };
 
 export default function Chatbot() {
@@ -260,11 +260,11 @@ export default function Chatbot() {
                             <button
                               key={option}
                               onClick={() => {
-                                if (option === "Contact FATE&DESTINY" || option === "Contact Us") {
-                                  setIsHandoff(true);
-                                } else {
-                                  handleSendMessage(option);
-                                }
+                              if (option === "Contact FATE&DESTINY" || option === "Contact Us" || option === "💬 I want to speak with the team") {
+                                setIsHandoff(true);
+                              } else {
+                                handleSendMessage(option);
+                              }
                               }}
                               disabled={isProcessing}
                               className="px-3 py-1.5 rounded-full border border-[#9E8557]/40 bg-[#0A0A0A] text-[#9E8557] text-[11px] font-medium tracking-wide hover:bg-[#9E8557] hover:text-[#050505] transition-colors disabled:opacity-50"
@@ -336,11 +336,11 @@ export default function Chatbot() {
             {/* Persistent Service Buttons */}
             {!isHandoff && (
               <div className="px-4 py-3 bg-[#0A0A0A] border-t border-[#1A1A1A] flex gap-2 overflow-x-auto scrollbar-none relative z-10 shrink-0">
-                {["Full-Stack Website", "AI Automation", "Agentic AI", "Contact Us"].map((service) => (
+                {["🚀 I need a premium website", "⚙️ I want AI automation", "🤖 I need an AI agent", "💰 What does it cost?", "📈 How can AI improve my business?", "💬 I want to speak with the team", "✨ Not sure what I need?"].map((service) => (
                   <button
                     key={service}
                     onClick={() => {
-                      if (service === "Contact Us") {
+                      if (service === "💬 I want to speak with the team") {
                         setIsHandoff(true);
                       } else {
                         handleSendMessage(service);

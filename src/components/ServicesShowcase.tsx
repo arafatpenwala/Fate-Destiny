@@ -11,9 +11,9 @@ const services = [
   {
     id: "websites",
     num: "01",
-    title: "PREMIUM WEBSITES",
+    title: "FULL-STACK WEBSITES",
     category: "WEBSITE DEVELOPMENT",
-    desc: "Premium, responsive websites designed to present your business clearly, build trust, and create meaningful customer interactions.",
+    desc: "Premium, high-performance websites built around your brand, business goals, and customer experience.",
     features: ["Custom frontend development", "Full-stack web applications", "Backend systems and APIs", "Responsive design", "Authentication and databases", "Deployment and performance optimization"]
   },
   {
@@ -61,15 +61,15 @@ const services = [
     num: "07",
     title: "AI AUTOMATION",
     category: "AI AUTOMATION",
-    desc: "Intelligent AI-powered workflows that automate repetitive business processes, connect your tools, and reduce manual work.",
+    desc: "Intelligent automation that reduces repetitive work, streamlines operations, captures leads, and connects your business workflows.",
     features: ["Workflow automation", "API integrations", "Repetitive task reduction", "Data synchronization", "Custom automation scripts", "Efficiency optimization"]
   },
   {
     id: "agentic-ai",
     num: "08",
-    title: "AGENTIC AI",
+    title: "AI AGENTS",
     category: "AGENTIC AI",
-    desc: "Intelligent AI agents that understand tasks, make decisions within defined boundaries, use connected tools, and take actions to complete business workflows.",
+    desc: "Intelligent AI agents designed to communicate with customers, answer questions, qualify leads, support sales, and handle business tasks.",
     features: ["Autonomous agents", "Task execution", "Decision making", "Tool integration", "Workflow completion", "Intelligent behavior"]
   }
 ];

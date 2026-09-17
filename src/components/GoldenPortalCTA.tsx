@@ -100,12 +100,12 @@ export default function GoldenPortalCTA() {
               THE CONCLUSION
             </span>
             <h2 className="text-[2.2rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[6.5rem] font-abeezee font-light text-[#F5F0E6] uppercase leading-[1.1] md:leading-[0.9] tracking-tighter mb-6 mix-blend-plus-lighter drop-shadow-2xl">
-              Let&apos;s Create <br />
-              <span className="italic text-[#9E8557]">What Comes Next.</span>
+              Ready to Build <br />
+              <span className="italic text-[#9E8557]">What's Next?</span>
             </h2>
             
             <p className="text-[#858585] text-[10px] md:text-xs font-inter tracking-[0.3em] uppercase mb-10 max-w-sm mix-blend-difference">
-              Step into the future of digital experiences. Your vision, engineered to absolute perfection.
+              Tell us what you're looking to achieve, and let's create the right digital solution for your business.
             </p>
 
             {/* Luxury Interactive Button */}

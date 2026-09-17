@@ -154,13 +154,14 @@ export default function IntelligenceAtelier() {
           THE INTELLIGENCE ATELIER
         </span>
         
-        <h2 className="text-[3.5rem] md:text-[5rem] xl:text-[6rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter mb-10 max-w-2xl">
-          BUILT WITH <br/>
-          <span className="italic text-[#9E8557]">INTELLIGENCE.</span>
+        <h2 className="text-[2.75rem] md:text-[4rem] xl:text-[5rem] font-abeezee font-light leading-[1] text-[#F5F0E6] uppercase tracking-tighter mb-10 max-w-2xl">
+          FROM DIGITAL <br/>
+          PRESENCE <br/>
+          <span className="italic text-[#9E8557]">TO DIGITAL <br className="hidden md:block"/> INTELLIGENCE.</span>
         </h2>
         
         <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-loose uppercase border-l border-[#9E8557]/30 pl-6 max-w-lg mb-16">
-          From sophisticated websites to modern digital experiences, we engineer digital solutions that transform ambition into extraordinary execution.
+          Whether you need a premium website, an automated workflow, or an AI-powered business system, FATE&DESTINY builds solutions around your goals.
         </p>
         
         <button className="flex items-center gap-6 group self-start">
