@@ -27,10 +27,10 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [sessionId] = useState(() => `session_${Date.now()}`);
-  
+
   // Voice Hook
   const { isListening, isSpeaking, error: voiceError, startListening, stopListening, speakText, stopSpeaking } = useVoice(handleVoiceTranscription);
-  
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasSpokenWelcomeRef = useRef(false);
 
@@ -69,7 +69,7 @@ export default function Chatbot() {
     if (!text.trim() || isProcessing) return;
 
     stopSpeaking();
-    
+
     const userMsg: Message = { id: Date.now().toString(), sender: "user", text };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue("");
@@ -78,27 +78,27 @@ export default function Chatbot() {
     try {
       // Send pageContext (current URL) to backend
       const pageContext = typeof window !== 'undefined' ? window.location.href : "";
-      
+
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, sessionId, pageContext })
       });
-      
+
       if (!res.ok) throw new Error("API error");
       const data = await res.json();
-      
-      const botMsg: Message = { 
-        id: (Date.now() + 1).toString(), 
-        sender: "bot", 
-        text: data.text, 
+
+      const botMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        sender: "bot",
+        text: data.text,
         toolUsed: data.toolUsed,
-        options: data.options 
+        options: data.options
       };
       setMessages((prev) => [...prev, botMsg]);
-      
+
       speakText(data.text);
-      
+
     } catch (err) {
       console.error(err);
       setMessages((prev) => [...prev, { id: Date.now().toString(), sender: "bot", text: "I'm experiencing a communication error. Please try again." }]);
@@ -150,7 +150,7 @@ export default function Chatbot() {
         body: JSON.stringify(formData)
       });
       setHandoffSuccess(true);
-      
+
       // Redirect to WhatsApp
       const text = `Hello FATE&DESTINY,\n\nMy name is ${formData.name}.\nEmail: ${formData.email}\n\nMessage:\n${formData.description}`;
       window.open(`https://wa.me/919372132828?text=${encodeURIComponent(text)}`, "_blank");
@@ -199,7 +199,7 @@ export default function Chatbot() {
             {/* Visual State Orb */}
             <AnimatePresence>
               {(isListening || isSpeaking || isProcessing) && !isHandoff && (
-                <motion.div 
+                <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 60, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -225,19 +225,18 @@ export default function Chatbot() {
 
             {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6 flex flex-col gap-5 scrollbar-thin scrollbar-thumb-[#1A1A1A] scrollbar-track-transparent relative z-10">
-              
+
               {!isHandoff ? (
                 <>
                   {messages.map((msg, idx) => (
                     <div key={msg.id} className={`flex flex-col w-full ${msg.sender === "user" ? "items-end" : "items-start"}`}>
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className={`max-w-[90%] rounded-2xl p-4 relative ${
-                          msg.sender === "user" 
-                            ? "bg-[#151515] text-[#F5F0E6] rounded-br-sm border border-[#222]" 
+                        className={`max-w-[90%] rounded-2xl p-4 relative ${msg.sender === "user"
+                            ? "bg-[#151515] text-[#F5F0E6] rounded-br-sm border border-[#222]"
                             : "bg-gradient-to-br from-[#111] to-[#050505] text-[#DCDCDC] rounded-bl-sm border border-[#9E8557]/30 shadow-[0_4px_20px_rgba(158,133,87,0.05)]"
-                        }`}
+                          }`}
                       >
                         {msg.toolUsed && (
                           <div className="absolute -top-3 left-4 bg-[#0A0A0A] border border-[#9E8557]/50 px-2 py-0.5 rounded text-[8px] text-[#9E8557] uppercase flex items-center gap-1">
@@ -252,7 +251,7 @@ export default function Chatbot() {
                           )}
                         </div>
                       </motion.div>
-                      
+
                       {/* Dynamic Options returned from backend */}
                       {msg.options && (
                         <div className={`flex flex-wrap gap-2 mt-2 ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
@@ -260,11 +259,11 @@ export default function Chatbot() {
                             <button
                               key={option}
                               onClick={() => {
-                              if (option === "Contact FATE&DESTINY" || option === "Contact Us" || option === "💬 I want to speak with the team") {
-                                setIsHandoff(true);
-                              } else {
-                                handleSendMessage(option);
-                              }
+                                if (option === "Contact FATE&DESTINY" || option === "Contact Us" || option === "💬 I want to speak with the team") {
+                                  setIsHandoff(true);
+                                } else {
+                                  handleSendMessage(option);
+                                }
                               }}
                               disabled={isProcessing}
                               className="px-3 py-1.5 rounded-full border border-[#9E8557]/40 bg-[#0A0A0A] text-[#9E8557] text-[11px] font-medium tracking-wide hover:bg-[#9E8557] hover:text-[#050505] transition-colors disabled:opacity-50"
@@ -274,7 +273,7 @@ export default function Chatbot() {
                           ))}
                         </div>
                       )}
-                      
+
                       {/* Action Buttons (Only for Bot) */}
                       {msg.sender === "bot" && idx > 0 && (
                         <div className="flex items-center gap-3 mt-1.5 ml-2 text-[#666]">
@@ -305,9 +304,9 @@ export default function Chatbot() {
                   {!handoffSuccess ? (
                     <form onSubmit={handleHandoffSubmit} className="flex flex-col gap-4 bg-[#0A0A0A] p-6 rounded-xl border border-[#1A1A1A]">
                       <h4 className="text-[#F5F0E6] font-abeezee uppercase text-lg mb-2">Connect with us</h4>
-                      <input type="text" placeholder="Name" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none" />
-                      <input type="email" placeholder="Email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none" />
-                      <textarea placeholder="How can we help?" required rows={3} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none resize-none" />
+                      <input type="text" placeholder="Name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none" />
+                      <input type="email" placeholder="Email" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none" />
+                      <textarea placeholder="How can we help?" required rows={3} value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })} className="w-full bg-[#050505] border border-[#222] rounded-lg px-4 py-3 text-[13px] text-[#F5F0E6] focus:border-[#9E8557] focus:outline-none resize-none" />
                       <button type="submit" className="w-full bg-[#9E8557] text-[#050505] py-3 rounded-lg text-[12px] font-bold uppercase tracking-wider hover:bg-[#C5A46D] transition-colors mt-2">Submit Request</button>
                       <button type="button" onClick={() => setIsHandoff(false)} className="w-full bg-transparent border border-[#333] text-[#858585] py-3 rounded-lg text-[12px] uppercase tracking-wider hover:bg-[#151515] hover:text-[#F5F0E6] transition-colors mt-2">Back to AI Chat</button>
                     </form>
@@ -316,12 +315,12 @@ export default function Chatbot() {
                       <CheckCircle className="w-12 h-12 text-[#9E8557] mb-4" />
                       <h4 className="text-[#F5F0E6] font-abeezee text-lg mb-2">Request Received</h4>
                       <p className="text-[12px] text-[#858585]">Our team will contact you shortly.</p>
-                      <button onClick={() => {setIsHandoff(false); setHandoffSuccess(false);}} className="mt-6 text-[#9E8557] text-[11px] uppercase underline">Return to AI Chat</button>
+                      <button onClick={() => { setIsHandoff(false); setHandoffSuccess(false); }} className="mt-6 text-[#9E8557] text-[11px] uppercase underline">Return to AI Chat</button>
                     </div>
                   )}
                 </div>
               )}
-              
+
               {/* Invisible element to scroll to */}
               <div ref={messagesEndRef} className="h-4 w-full shrink-0" />
             </div>
@@ -336,11 +335,11 @@ export default function Chatbot() {
             {/* Persistent Service Buttons */}
             {!isHandoff && (
               <div className="px-4 py-3 bg-[#0A0A0A] border-t border-[#1A1A1A] flex gap-2 overflow-x-auto scrollbar-none relative z-10 shrink-0">
-                {["🚀 I need a premium website", "⚙️ I want AI automation", "🤖 I need an AI agent", "💰 What does it cost?", "📈 How can AI improve my business?", "💬 I want to speak with the team", "✨ Not sure what I need?"].map((service) => (
+                {["I need a premium website", "I want AI automation", "I need an AI agent", "What does it cost?", "How can AI improve my business?", "I want to speak with the team", "Not sure what I need?"].map((service) => (
                   <button
                     key={service}
                     onClick={() => {
-                      if (service === "💬 I want to speak with the team") {
+                      if (service === "I want to speak with the team") {
                         setIsHandoff(true);
                       } else {
                         handleSendMessage(service);
@@ -358,8 +357,8 @@ export default function Chatbot() {
             {/* Input Area */}
             {!isHandoff && (
               <div className="p-4 pt-1 bg-[#0A0A0A] relative z-10 shrink-0">
-                <form 
-                  onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }} 
+                <form
+                  onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}
                   className="flex items-center gap-2 relative bg-[#050505] border border-[#222] rounded-full pr-1 pl-4"
                 >
                   <input
@@ -390,7 +389,7 @@ export default function Chatbot() {
                 </form>
               </div>
             )}
-            
+
           </motion.div>
         )}
       </AnimatePresence>
@@ -404,9 +403,9 @@ export default function Chatbot() {
             exit={{ opacity: 0, scale: 0.8 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => { 
-              setIsOpen(true); 
-              setIsMinimized(false); 
+            onClick={() => {
+              setIsOpen(true);
+              setIsMinimized(false);
               if (!hasSpokenWelcomeRef.current) {
                 hasSpokenWelcomeRef.current = true;
                 speakText(INITIAL_MESSAGE.text);
