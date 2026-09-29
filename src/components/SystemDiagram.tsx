@@ -215,7 +215,7 @@ export default function SystemDiagram() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % systemNodes.length);
-    }, 10000); // 12 seconds
+    }, 7000); // 12 seconds
     return () => clearInterval(timer);
   }, [active]);
 
