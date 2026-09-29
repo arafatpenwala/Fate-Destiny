@@ -1,158 +1,327 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Cpu, Layers, Database, Activity } from "lucide-react";
-import { div } from "three/src/nodes/math/OperatorNode.js";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, Sparkles, Workflow, BrainCircuit, Globe } from "lucide-react";
 
-export default function SystemDiagram() {
-  const containerRef = useRef<HTMLElement>(null);
-  const nodesRef = useRef<(HTMLDivElement | null)[]>([]);
-  const linesRef = useRef<SVGSVGElement>(null);
+const systemNodes = [
+  {
+    num: "01",
+    layer: "ARCHITECTURE LAYER",
+    title: "PREMIUM WEB DEVELOPMENT",
+    desc: "Custom, responsive websites designed to present your brand clearly and build trust with your audience.",
+    icon: Globe,
+  },
+  {
+    num: "02",
+    layer: "DISCOVERY LAYER",
+    title: "SEO & VISIBILITY",
+    desc: "Foundational search optimization that helps search engines understand and rank your digital presence.",
+    icon: Search,
+  },
+  {
+    num: "03",
+    layer: "CREATIVE LAYER",
+    title: "AI CREATIVE",
+    desc: "AI-assisted visuals and dynamic content concepts created to support modern marketing strategies.",
+    icon: Sparkles,
+  },
+  {
+    num: "04",
+    layer: "AUTOMATION LAYER",
+    title: "AI AUTOMATION",
+    desc: "Intelligent workflows that automate repetitive processes and connect your digital tools effortlessly.",
+    icon: Workflow,
+  },
+  {
+    num: "05",
+    layer: "AUTONOMOUS LAYER",
+    title: "AGENTIC AI",
+    desc: "Intelligent AI agents that understand complex tasks, make decisions, and take actions on your behalf.",
+    icon: BrainCircuit,
+  }
+];
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    gsap.registerPlugin(ScrollTrigger);
+// --- 3D Visual Components for the Stage ---
 
-    if (!containerRef.current || prefersReducedMotion) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 60%",
-      }
-    });
-
-    // Animate Nodes popping in
-    tl.fromTo(nodesRef.current,
-      { scale: 0.8, opacity: 0, y: 50 },
-      { scale: 1, opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "back.out(1.5)" }
-    );
-
-    // Animate SVG Lines drawing in
-    if (linesRef.current) {
-      const paths = linesRef.current.querySelectorAll("path");
-      if (paths.length > 0) {
-        tl.fromTo(paths,
-          { strokeDasharray: "1000", strokeDashoffset: "1000" },
-          { strokeDashoffset: "0", duration: 1.5, stagger: 0.3, ease: "power2.inOut" },
-          "-=1"
-        );
-      }
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-  }, []);
-
-  return (
-    <section
-      id="system"
-      ref={containerRef}
-      className="relative min-h-[70vh] lg:min-h-[120vh] w-full bg-[#050505] flex flex-col items-center justify-center overflow-hidden z-20 border-t border-[#151515] pt-24 pb-48 lg:py-24"
+const WebVisual = () => (
+  <div className="w-[70%] h-[55%] border border-[#333]/50 rounded-2xl flex flex-col bg-[#050505] shadow-[0_20px_50px_rgba(158,133,87,0.15)] [perspective:1000px]">
+    <motion.div
+      initial={{ rotateX: 20, rotateY: -20 }}
+      animate={{ rotateX: [20, 30, 20], rotateY: [-20, -10, -20] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      className="w-full h-full flex flex-col"
     >
-      {/* Background Matrix */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#9E8557 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_10%,_#050505_80%)] z-0 pointer-events-none" />
+      <div className="h-8 w-full border-b border-[#222] flex items-center gap-2 px-4 bg-[#0A0A0A]">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+        <div className="w-2.5 h-2.5 rounded-full bg-[#333]" />
+      </div>
+      <div className="flex-1 flex gap-4 p-5">
+        <div className="w-1/3 h-full bg-[#111] rounded-xl border border-[#222] relative overflow-hidden">
+          <motion.div
+            animate={{ y: ["-100%", "200%"] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 bg-gradient-to-b from-transparent via-[#9E8557]/30 to-transparent"
+          />
+        </div>
+        <div className="w-2/3 h-full flex flex-col gap-4">
+          <div className="w-full h-1/2 bg-[#111] rounded-xl border border-[#222]" />
+          <motion.div className="w-full h-1/2 bg-[#9E8557]/10 border border-[#9E8557]/30 rounded-xl relative overflow-hidden">
+            <motion.div
+              animate={{ x: ["-100%", "200%"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-[#9E8557]/40 to-transparent skew-x-12"
+            />
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
 
-      {/* Typography Header */}
-      <div className="relative w-full max-w-[1400px] px-6 md:px-12 z-30 mb-12 flex flex-col items-center text-center">
-        <span className="text-[10px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-6 animate-pulse">
-          MORE THAN A WEBSITE
-        </span>
-        <h2 className="text-[3rem] md:text-[5rem] lg:text-[6rem] font-abeezee font-light leading-[0.9] text-[#F5F0E6] uppercase tracking-tighter mix-blend-difference mb-8">
-          A DIGITAL SYSTEM <span className="italic text-[#9E8557]">BUILT AROUND YOUR BUSINESS.</span>
-        </h2>
-        <p className="text-[10px] md:text-[12px] font-inter text-[#858585] tracking-[0.2em] max-w-2xl leading-loose uppercase border-t border-[#151515] pt-8">
-          We combine premium web development, intelligent automation, and AI to create digital solutions designed around how your business actually operates.
-        </p>
+const RadarVisual = () => (
+  <div className="w-full h-full flex items-center justify-center">
+    <div className="w-64 h-64 rounded-full border border-[#222]/60 relative flex items-center justify-center">
+      <div className="w-40 h-40 rounded-full border border-[#333]/60" />
+      <div className="w-16 h-16 rounded-full border border-[#444]/60" />
+      <motion.div
+        animate={{ scale: [1, 2.5], opacity: [1, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+        className="w-12 h-12 rounded-full border border-[#9E8557] bg-[#9E8557]/20 absolute"
+      />
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#9E8557] to-[#9E8557] absolute origin-center shadow-[0_0_15px_#9E8557]"
+      />
+      <Search className="w-8 h-8 text-[#9E8557] absolute z-10 drop-shadow-[0_0_15px_rgba(158,133,87,1)]" />
+    </div>
+  </div>
+);
+
+const StarsVisual = () => (
+  <div className="w-full h-full flex items-center justify-center relative">
+    <motion.div
+      animate={{ scale: [1, 1.4, 1], rotate: [0, 90, 180] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+    >
+      <Sparkles className="w-28 h-28 text-[#9E8557] drop-shadow-[0_0_30px_rgba(158,133,87,0.8)]" strokeWidth={1} />
+    </motion.div>
+    <motion.div
+      animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.4, 0.1] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_#9E8557_1.5px,_transparent_1.5px)] bg-[size:40px_40px] [mask-image:radial-gradient(black,transparent_70%)]"
+    />
+  </div>
+);
+
+const NodesVisual = () => (
+  <div className="w-full h-full relative flex flex-col items-center justify-center">
+
+    {/* Central Data Pipeline */}
+    <div className="flex items-center w-[85%] max-w-[400px] h-20 relative z-20">
+
+      {/* Input Node */}
+      <div className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-xl sm:rounded-2xl border border-[#222] bg-gradient-to-br from-[#111] to-[#0A0A0A] flex items-center justify-center shadow-[inset_0_0_15px_rgba(0,0,0,0.8)] z-20 relative overflow-hidden">
+        <div className="absolute top-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#9E8557]/50 to-transparent" />
+        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#9E8557] rounded-sm animate-pulse shadow-[0_0_10px_#9E8557]" />
       </div>
 
-      {/* The Diagram Area */}
-      <div className="relative z-10 mx-auto flex items-center justify-center w-full overflow-hidden h-[450px] sm:h-[600px] md:h-[800px] lg:h-[800px] xl:h-[900px] lg:overflow-visible mt-12 lg:mt-24">
-        <div className="relative w-[1600px] h-[1600px] shrink-0 flex items-center justify-center scale-[0.25] sm:scale-[0.40] md:scale-[0.50] lg:scale-[0.55] xl:scale-[0.65] 2xl:scale-[0.75] origin-center">
+      {/* Data Stream 1 */}
+      <div className="flex-1 h-[2px] bg-[#1A1A1A] relative overflow-hidden">
+        <motion.div
+          animate={{ x: ["-100%", "300%"] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-[#9E8557] to-transparent shadow-[0_0_10px_#9E8557]"
+        />
+      </div>
 
-          {/* Animated Connection Lines (SVG) */}
-          <svg ref={linesRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ filter: "drop-shadow(0px 0px 8px rgba(158,133,87,0.4))" }}>
-            <defs>
-              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#9E8557" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#F5F0E6" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#9E8557" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
+      {/* Core Processing Node */}
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-xl sm:rounded-2xl border border-[#9E8557] bg-[#0A0A0A] flex items-center justify-center shadow-[0_0_40px_rgba(158,133,87,0.4)] z-20 relative"
+      >
+        <Workflow className="w-8 h-8 sm:w-10 sm:h-10 text-[#9E8557] drop-shadow-[0_0_10px_rgba(158,133,87,1)]" />
 
-            {/* Orbital Ring Track */}
-            <circle cx="800" cy="800" r="600" fill="none" stroke="url(#lineGrad)" strokeWidth="2" strokeDasharray="10 10" className="animate-[spin_40s_linear_infinite_reverse] origin-[800px_800px]" />
-            <circle cx="800" cy="800" r="600" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.3" className="origin-[800px_800px]" />
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          className="absolute -inset-[6px] rounded-xl sm:rounded-2xl border border-dashed border-[#9E8557]/50"
+        />
+      </motion.div>
 
-            {/* Central Core Connection */}
-            <circle cx="800" cy="800" r="280" fill="none" stroke="#151515" strokeWidth="1" strokeDasharray="4 4" className="animate-[spin_20s_linear_infinite] origin-[800px_800px]" />
-            <circle cx="800" cy="800" r="220" fill="none" stroke="#9E8557" strokeWidth="1" strokeOpacity="0.2" className="animate-[spin_15s_linear_infinite_reverse] origin-[800px_800px]" />
-          </svg>
+      {/* Data Stream 2 */}
+      <div className="flex-1 h-[2px] bg-[#1A1A1A] relative overflow-hidden">
+        <motion.div
+          animate={{ x: ["-100%", "300%"] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.75 }}
+          className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-[#9E8557] to-transparent shadow-[0_0_10px_#9E8557]"
+        />
+      </div>
 
-          {/* Central Logo */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-40 h-40 flex items-center justify-center pointer-events-none" style={{ WebkitMaskImage: 'radial-gradient(circle, black 65%, transparent 80%)', maskImage: 'radial-gradient(circle, black 65%, transparent 80%)' }}>
-            <div className="w-full h-full bg-[url('/fd-logo-gold.png')] bg-contain bg-center bg-no-repeat mix-blend-screen opacity-90" />
-          </div>
-
-          {/* Circular Orbit Wrappers */}
-          {[
-            { num: "01", layer: "ARCHITECTURE LAYER", title: "PREMIUM WEBSITE DEVELOPMENT", desc: "Custom, responsive websites designed to present your brand clearly and build trust.", delay: "0s" },
-            { num: "02", layer: "EVOLUTION LAYER", title: "WEBSITE REDESIGN & MODERNIZATION", desc: "Transform outdated websites into modern premium digital experiences.", delay: "-5s" },
-            { num: "03", layer: "INTELLIGENCE LAYER", title: "AI-POWERED DIGITAL EXPERIENCES", desc: "Intelligent web features designed to assist users and enhance interactions.", delay: "-10s" },
-            { num: "04", layer: "DISCOVERY LAYER", title: "SEO & GOOGLE VISIBILITY", desc: "Foundational search optimization that helps search engines understand your website.", delay: "-15s" },
-            { num: "05", layer: "CREATIVE LAYER", title: "AI CREATIVE & CONTENT", desc: "AI-assisted visuals and content concepts created to support modern marketing.", delay: "-20s" },
-            { num: "06", layer: "GROWTH LAYER", title: "WEBSITE MAINTENANCE & GROWTH", desc: "Continuous website development and performance optimization.", delay: "-25s" },
-            { num: "07", layer: "AUTOMATION LAYER", title: "AI AUTOMATION", desc: "Intelligent AI-powered workflows that automate repetitive business processes and connect your tools.", delay: "-30s" },
-            { num: "08", layer: "AUTONOMOUS LAYER", title: "AGENTIC AI", desc: "Intelligent AI agents that understand tasks, make decisions, and take actions to complete workflows.", delay: "-35s" }
-          ].map((node, i) => (
-            <div key={i} className="absolute inset-0 pointer-events-none" style={{ animation: 'spin 40s linear infinite', animationDelay: node.delay }}>
-              <div
-                className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[340px] h-[340px] pointer-events-auto"
-                style={{ animation: 'spin 40s linear infinite reverse', animationDelay: node.delay }}
-              >
-                <div
-                  ref={el => { nodesRef.current[i] = el; }}
-                  className="w-full h-full bg-gradient-to-br from-[#0A0A0A]/90 to-[#050505]/90 backdrop-blur-xl border border-[#1A1A1A] rounded-[30px] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:border-[#9E8557]/50 hover:-translate-y-4 transition-all duration-700 group z-10 flex flex-col justify-between overflow-hidden relative"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle,_rgba(158,133,87,0.2)_0%,_transparent_70%)] blur-[30px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  
-                  {/* Bottom Right FD Logo */}
-                  <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-[url('/fd-logo-gold.png')] bg-contain bg-no-repeat opacity-[0.15] lg:opacity-[0.05] group-hover:opacity-[0.15] mix-blend-screen transition-all duration-700 pointer-events-none z-0" />
-
-                  <div>
-                    <span className="text-[10px] md:text-[11px] font-inter tracking-[0.2em] text-[#858585] uppercase mb-4 transition-colors duration-500 group-hover:text-[#9E8557] relative z-10 block">{node.num} // {node.layer}</span>
-                    <h3 className="text-3xl md:text-4xl font-abeezee text-[#F5F0E6] uppercase tracking-tighter mb-4 relative z-10">{node.title}</h3>
-                  </div>
-                  <p className="text-[11px] md:text-[12px] font-inter text-[#9B9B9B] tracking-[0.1em] leading-[2] uppercase relative z-10">
-                    {node.desc}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* Output Node */}
+      <div className="w-12 h-12 sm:w-16 sm:h-16 shrink-0 rounded-xl sm:rounded-2xl border border-[#222] bg-gradient-to-br from-[#111] to-[#0A0A0A] flex flex-col items-center justify-center gap-1 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)] z-20 relative overflow-hidden">
+        <div className="absolute top-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#9E8557]/50 to-transparent" />
+        <div className="flex gap-1 sm:gap-1.5">
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#9E8557] rounded-full shadow-[0_0_5px_#9E8557]" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#9E8557] rounded-full shadow-[0_0_5px_#9E8557]" />
+        </div>
+        <div className="flex gap-1 sm:gap-1.5">
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#9E8557] rounded-full shadow-[0_0_5px_#9E8557]" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#9E8557] rounded-full shadow-[0_0_5px_#9E8557]" />
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes dash {
-          to {
-            stroke-dashoffset: -100;
-          }
-        }
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+    </div>
 
-    </section >
+    {/* Ambient Orbital Rings */}
+    <div className="absolute w-[280px] h-[280px] rounded-full border border-[#1A1A1A] flex items-center justify-center z-10 pointer-events-none">
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="w-full h-full rounded-full border-[2px] border-dashed border-[#222]"
+      />
+    </div>
+  </div>
+);
+
+const BrainVisual = () => (
+  <div className="w-full h-full flex items-center justify-center relative">
+    <motion.div
+      animate={{ scale: [1, 1.15, 1], filter: ["brightness(1)", "brightness(1.5)", "brightness(1)"] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <BrainCircuit className="w-28 h-28 text-[#9E8557] drop-shadow-[0_0_40px_rgba(158,133,87,1)]" strokeWidth={1} />
+    </motion.div>
+    <motion.div
+      animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      className="absolute w-56 h-56 sm:w-64 sm:h-64 rounded-full border-[2px] border-[#9E8557]/40 border-dashed shadow-[0_0_30px_rgba(158,133,87,0.1)]"
+    />
+    <motion.div
+      animate={{ rotate: -360 }}
+      transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      className="absolute w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full border-[2px] border-[#333]/50 border-dotted"
+    />
+  </div>
+);
+
+
+export default function SystemDiagram() {
+  const [active, setActive] = useState(0);
+
+  // Auto-play through the tabs, resetting timer when a tab is manually clicked
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % systemNodes.length);
+    }, 10000); // 12 seconds
+    return () => clearInterval(timer);
+  }, [active]);
+
+  const node = systemNodes[active];
+  const Icon = node.icon;
+
+  return (
+    <section id="system" className="relative w-full bg-[#050505] py-24 md:py-32 overflow-hidden z-20 border-t border-[#151515]">
+
+      {/* High-End Background Ambience */}
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'linear-gradient(#9E8557 1px, transparent 1px), linear-gradient(90deg, #9E8557 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#9E8557]/5 blur-[150px] rounded-full pointer-events-none z-0" />
+
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 z-30 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center min-h-[700px]">
+
+        {/* Left Column: Interactive Navigation & Text Content */}
+        <div className="w-full lg:w-5/12 flex flex-col z-20 mb-12 lg:mb-0">
+
+          <span className="text-[10px] md:text-[12px] font-inter tracking-[0.4em] text-[#9E8557] uppercase block mb-10 flex items-center">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#9E8557] mr-4 animate-pulse shadow-[0_0_10px_#9E8557]" />
+            The Infrastructure
+          </span>
+
+          {/* Tab Navigation Menu */}
+          <div className="flex lg:flex-wrap gap-4 md:gap-8 mb-12 border-b border-[#222] pb-6 overflow-x-auto no-scrollbar">
+            {systemNodes.map((n, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`relative flex items-center gap-3 pb-4 shrink-0 transition-colors duration-500 outline-none ${active === i ? 'text-[#F5F0E6]' : 'text-[#555] hover:text-[#9E8557]'}`}
+              >
+                <span className="text-[11px] sm:text-[12px] md:text-[14px] font-inter tracking-widest font-medium">{n.num}</span>
+                <span className="text-[10px] sm:text-[11px] font-inter tracking-[0.2em] uppercase hidden sm:block">{n.layer}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Animated Text Content */}
+          <div className="h-[220px] sm:h-[240px] lg:h-[280px] relative mt-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 20, filter: "blur(5px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(5px)" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="absolute inset-0 flex flex-col"
+              >
+                <h2 className="text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-abeezee font-light leading-[1.1] text-[#F5F0E6] uppercase tracking-tighter mb-4 lg:mb-6 drop-shadow-xl">
+                  {node.title}
+                </h2>
+                <p className="text-[13px] sm:text-[14px] md:text-[16px] font-inter text-[#858585] tracking-[0.05em] leading-relaxed max-w-md">
+                  {node.desc}
+                </p>
+
+                <div className="mt-auto flex items-center gap-4 text-[#9E8557] text-[10px] md:text-[11px] font-inter tracking-[0.2em] uppercase">
+                  <Icon className="w-5 h-5 animate-pulse" />
+                  <span>System Active</span>
+                  <div className="w-12 h-[1px] bg-gradient-to-r from-[#9E8557] to-transparent ml-2" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Right Column: Massive Holographic Stage */}
+        <div className="w-full lg:w-7/12 flex items-center justify-center lg:justify-end relative pointer-events-none">
+
+          <div className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] rounded-full border border-[#1A1A1A] bg-gradient-to-br from-[#0A0A0A] to-[#050505] relative flex items-center justify-center shadow-[inset_0_0_40px_rgba(0,0,0,0.8),0_20px_60px_rgba(0,0,0,0.5)] lg:shadow-[inset_0_0_80px_rgba(0,0,0,0.8),0_20px_60px_rgba(0,0,0,0.5)]">
+
+            {/* Spinning Golden Stage Border */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-[1px] rounded-full border-[2px] border-transparent border-t-[#9E8557]/40 border-b-[#9E8557]/40 opacity-50"
+            />
+
+            {/* Inner Dashboard Dashed Ring */}
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-[20px] rounded-full border border-dashed border-[#222]"
+            />
+
+            {/* Visual Transitions */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                {active === 0 && <WebVisual />}
+                {active === 1 && <RadarVisual />}
+                {active === 2 && <StarsVisual />}
+                {active === 3 && <NodesVisual />}
+                {active === 4 && <BrainVisual />}
+              </motion.div>
+            </AnimatePresence>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }

@@ -101,6 +101,7 @@ function StudioRobot({ activeCard }: { activeCard: number | null }) {
   const [logoTexture, setLogoTexture] = useState<THREE.Texture | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLogoTexture(new THREE.TextureLoader().load("/fd-logo.png"));
   }, []);
 

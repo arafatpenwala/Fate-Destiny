@@ -23,7 +23,13 @@ export default function IntroLoader() {
         clearInterval(interval);
         
         // GSAP exit animation
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({
+          onComplete: () => {
+            if (loaderRef.current) {
+              loaderRef.current.style.display = "none";
+            }
+          }
+        });
         
         tl.to(textRef.current, {
           opacity: 0,

@@ -77,7 +77,7 @@ export default function VisionaryMatrix() {
             <span className="italic text-[#9E8557]">TOMORROW.</span>
           </h2>
           <p className="mt-8 text-[11px] md:text-sm font-inter text-[#858585] tracking-[0.2em] uppercase leading-loose max-w-lg border-l border-[#9E8557]/30 pl-6 backdrop-blur-sm">
-            We transcend traditional development to architect ecosystems where design and data converge into intelligent experiences. The future isn't predicted; it is built.
+            We transcend traditional development to architect ecosystems where design and data converge into intelligent experiences. The future isn&apos;t predicted; it is built.
           </p>
         </div>
 
