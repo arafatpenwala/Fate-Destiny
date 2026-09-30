@@ -26,7 +26,6 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [inputValue, setInputValue] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [sessionId] = useState(() => `session_${Date.now()}`);
 
   // Voice Hook
   const { isListening, isSpeaking, error: voiceError, startListening, stopListening, speakText, stopSpeaking } = useVoice(handleVoiceTranscription);
@@ -82,7 +81,7 @@ export default function Chatbot() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, sessionId, pageContext })
+        body: JSON.stringify({ message: text, pageContext })
       });
 
       if (!res.ok) throw new Error("API error");
@@ -117,7 +116,7 @@ export default function Chatbot() {
       await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId, action: "clear" })
+        body: JSON.stringify({ action: "clear" })
       });
     } catch (e) {
       console.error("Failed to clear backend memory");
